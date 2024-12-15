@@ -1,0 +1,13 @@
+{
+  "name": "salon-management-system",
+  "version": "1.0.0",
+  "description": "Salon Management System",
+  "scripts": {
+    "restart": "taskkill /F /IM node.exe || true && npm run dev",
+    "restart:unix": "killall node || true && npm run dev",
+    "dev": "concurrently \"cd server && npm run dev\" \"cd client && npm run dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

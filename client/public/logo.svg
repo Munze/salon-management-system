@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Lotus/Flower Design -->
+    <g transform="translate(256, 256)">
+        <!-- Outer petals -->
+        <path d="M0,-180 C100,-160 160,-100 180,0 C160,100 100,160 0,180 C-100,160 -160,100 -180,0 C-160,-100 -100,-160 0,-180" 
+              fill="#8B5CF6" opacity="0.6">
+            <animate attributeName="opacity" values="0.6;0.8;0.6" dur="3s" repeatCount="indefinite"/>
+        </path>
+        <!-- Inner petals -->
+        <path d="M0,-140 C80,-120 120,-80 140,0 C120,80 80,120 0,140 C-80,120 -120,80 -140,0 C-120,-80 -80,-120 0,-140" 
+              fill="#8B5CF6" opacity="0.8">
+            <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/>
+        </path>
+        <!-- Center -->
+        <circle r="50" fill="#8B5CF6"/>
+    </g>
+</svg>

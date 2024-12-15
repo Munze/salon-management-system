@@ -1,0 +1,5 @@
+export { CalendarIcon } from './CalendarIcon'
+export { HomeIcon } from './HomeIcon'
+export { UsersIcon } from './UsersIcon'
+export { UserGroupIcon } from './UserGroupIcon'
+export { ScheduleIcon } from './ScheduleIcon'

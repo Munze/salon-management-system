@@ -1,0 +1,1298 @@
+{"clientVersion":"5.22.0","level":"error","message":"Error in reminder scheduler: \nInvalid `prisma.appointment.findMany()` invocation in\nc:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\src\\services\\scheduler.ts:13:53\n\n  10 const job = new CronJob('0 0 * * * *', async () => {\n  11   try {\n  12     // Get all confirmed appointments in the next 25 hours that haven't had reminders sent\n→ 13     const appointments = await prisma.appointment.findMany({\n           where: {\n             status: \"CONFIRMED\",\n             reminderSent: false,\n             startTime: {\n               gt: new Date(\"2024-12-05T00:00:00.010Z\"),\n               lt: new Date(\"2024-12-06T01:00:00.010Z\")\n             }\n           },\n           include: {\n             client: true,\n             therapist: true,\n             service: true\n             ~~~~~~~\n           }\n         })\n\nUnknown field `service` for include statement on model `Appointment`. Available options are marked with ?.","name":"PrismaClientValidationError","stack":"PrismaClientValidationError: \nInvalid `prisma.appointment.findMany()` invocation in\nc:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\src\\services\\scheduler.ts:13:53\n\n  10 const job = new CronJob('0 0 * * * *', async () => {\n  11   try {\n  12     // Get all confirmed appointments in the next 25 hours that haven't had reminders sent\n→ 13     const appointments = await prisma.appointment.findMany({\n           where: {\n             status: \"CONFIRMED\",\n             reminderSent: false,\n             startTime: {\n               gt: new Date(\"2024-12-05T00:00:00.010Z\"),\n               lt: new Date(\"2024-12-06T01:00:00.010Z\")\n             }\n           },\n           include: {\n             client: true,\n             therapist: true,\n             service: true\n             ~~~~~~~\n           }\n         })\n\nUnknown field `service` for include statement on model `Appointment`. Available options are marked with ?.\n    at wn (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at $n.handleRequestError (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\node_modules\\@prisma\\client\\runtime\\library.js:121:6958)\n    at $n.handleAndLogRequestError (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\node_modules\\@prisma\\client\\runtime\\library.js:121:6623)\n    at $n.request (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\node_modules\\@prisma\\client\\runtime\\library.js:121:6307)\n    at l (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\node_modules\\@prisma\\client\\runtime\\library.js:130:9633)\n    at CronJob.<anonymous> (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\src\\services\\scheduler.ts:13:28)","timestamp":"2024-12-05T00:00:00.037Z"}
+{"error":"\nInvalid `prisma.client.findMany()` invocation in\nc:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\src\\controllers\\client.ts:9:41\n\n  6 export const getAllClients = async (req: Request, res: Response) => {\n  7   try {\n  8     logger.info('Attempting to fetch all clients');\n→ 9     const clients = await prisma.client.findMany(\nThe column `Client.address` does not exist in the current database.","level":"error","message":"Error fetching clients:","stack":"PrismaClientKnownRequestError: \nInvalid `prisma.client.findMany()` invocation in\nc:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\src\\controllers\\client.ts:9:41\n\n  6 export const getAllClients = async (req: Request, res: Response) => {\n  7   try {\n  8     logger.info('Attempting to fetch all clients');\n→ 9     const clients = await prisma.client.findMany(\nThe column `Client.address` does not exist in the current database.\n    at $n.handleRequestError (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\node_modules\\@prisma\\client\\runtime\\library.js:121:7315)\n    at $n.handleAndLogRequestError (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\node_modules\\@prisma\\client\\runtime\\library.js:121:6623)\n    at $n.request (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\node_modules\\@prisma\\client\\runtime\\library.js:121:6307)\n    at l (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\node_modules\\@prisma\\client\\runtime\\library.js:130:9633)\n    at getAllClients (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\src\\controllers\\client.ts:9:21)","timestamp":"2024-12-05T21:14:27.141Z"}
+{"error":"\nInvalid `prisma.client.findMany()` invocation in\nc:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\src\\controllers\\client.ts:9:41\n\n  6 export const getAllClients = async (req: Request, res: Response) => {\n  7   try {\n  8     logger.info('Attempting to fetch all clients');\n→ 9     const clients = await prisma.client.findMany(\nThe column `Client.address` does not exist in the current database.","level":"error","message":"Error fetching clients:","stack":"PrismaClientKnownRequestError: \nInvalid `prisma.client.findMany()` invocation in\nc:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\src\\controllers\\client.ts:9:41\n\n  6 export const getAllClients = async (req: Request, res: Response) => {\n  7   try {\n  8     logger.info('Attempting to fetch all clients');\n→ 9     const clients = await prisma.client.findMany(\nThe column `Client.address` does not exist in the current database.\n    at $n.handleRequestError (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\node_modules\\@prisma\\client\\runtime\\library.js:121:7315)\n    at $n.handleAndLogRequestError (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\node_modules\\@prisma\\client\\runtime\\library.js:121:6623)\n    at $n.request (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\node_modules\\@prisma\\client\\runtime\\library.js:121:6307)\n    at l (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\node_modules\\@prisma\\client\\runtime\\library.js:130:9633)\n    at getAllClients (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\src\\controllers\\client.ts:9:21)","timestamp":"2024-12-05T21:14:27.151Z"}
+{"error":"\nInvalid `prisma.client.findMany()` invocation in\nc:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\src\\controllers\\client.ts:9:41\n\n  6 export const getAllClients = async (req: Request, res: Response) => {\n  7   try {\n  8     logger.info('Attempting to fetch all clients');\n→ 9     const clients = await prisma.client.findMany(\nThe column `Client.address` does not exist in the current database.","level":"error","message":"Error fetching clients:","stack":"PrismaClientKnownRequestError: \nInvalid `prisma.client.findMany()` invocation in\nc:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\src\\controllers\\client.ts:9:41\n\n  6 export const getAllClients = async (req: Request, res: Response) => {\n  7   try {\n  8     logger.info('Attempting to fetch all clients');\n→ 9     const clients = await prisma.client.findMany(\nThe column `Client.address` does not exist in the current database.\n    at $n.handleRequestError (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\node_modules\\@prisma\\client\\runtime\\library.js:121:7315)\n    at $n.handleAndLogRequestError (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\node_modules\\@prisma\\client\\runtime\\library.js:121:6623)\n    at $n.request (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\node_modules\\@prisma\\client\\runtime\\library.js:121:6307)\n    at l (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\node_modules\\@prisma\\client\\runtime\\library.js:130:9633)\n    at getAllClients (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\src\\controllers\\client.ts:9:21)","timestamp":"2024-12-05T21:14:31.795Z"}
+{"error":"\nInvalid `prisma.client.findMany()` invocation in\nc:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\src\\controllers\\client.ts:9:41\n\n  6 export const getAllClients = async (req: Request, res: Response) => {\n  7   try {\n  8     logger.info('Attempting to fetch all clients');\n→ 9     const clients = await prisma.client.findMany(\nThe column `Client.address` does not exist in the current database.","level":"error","message":"Error fetching clients:","stack":"PrismaClientKnownRequestError: \nInvalid `prisma.client.findMany()` invocation in\nc:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\src\\controllers\\client.ts:9:41\n\n  6 export const getAllClients = async (req: Request, res: Response) => {\n  7   try {\n  8     logger.info('Attempting to fetch all clients');\n→ 9     const clients = await prisma.client.findMany(\nThe column `Client.address` does not exist in the current database.\n    at $n.handleRequestError (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\node_modules\\@prisma\\client\\runtime\\library.js:121:7315)\n    at $n.handleAndLogRequestError (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\node_modules\\@prisma\\client\\runtime\\library.js:121:6623)\n    at $n.request (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\node_modules\\@prisma\\client\\runtime\\library.js:121:6307)\n    at l (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\node_modules\\@prisma\\client\\runtime\\library.js:130:9633)\n    at getAllClients (c:\\Users\\sasao\\Documents\\Programiranje\\salon-management-system\\server\\src\\controllers\\client.ts:9:21)","timestamp":"2024-12-05T21:14:31.800Z"}
+2024-12-05T21:17:50.025Z [error] : [s9oaqn] Error in getAllClients: 
+Error: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+Stack: PrismaClientKnownRequestError: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+    at $n.handleRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:7315)
+    at $n.handleAndLogRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at l (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at getAllClients (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:21)
+2024-12-05T21:17:50.026Z [error] : [s9oaqn] Prisma error: 
+Metadata: {
+  "code": "P2022",
+  "meta": {
+    "modelName": "Client",
+    "column": "Client.address"
+  },
+  "clientVersion": "5.22.0"
+}
+2024-12-05T21:17:50.037Z [error] : [vaum4] Error in getAllClients: 
+Error: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+Stack: PrismaClientKnownRequestError: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+    at $n.handleRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:7315)
+    at $n.handleAndLogRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at l (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at getAllClients (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:21)
+2024-12-05T21:17:50.038Z [error] : [vaum4] Prisma error: 
+Metadata: {
+  "code": "P2022",
+  "meta": {
+    "modelName": "Client",
+    "column": "Client.address"
+  },
+  "clientVersion": "5.22.0"
+}
+2024-12-05T21:17:54.595Z [error] : [rgt81] Error in getAllClients: 
+Error: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+Stack: PrismaClientKnownRequestError: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+    at $n.handleRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:7315)
+    at $n.handleAndLogRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at l (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at getAllClients (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:21)
+2024-12-05T21:17:54.595Z [error] : [rgt81] Prisma error: 
+Metadata: {
+  "code": "P2022",
+  "meta": {
+    "modelName": "Client",
+    "column": "Client.address"
+  },
+  "clientVersion": "5.22.0"
+}
+2024-12-05T21:17:54.615Z [error] : [j6kbzr] Error in getAllClients: 
+Error: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+Stack: PrismaClientKnownRequestError: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+    at $n.handleRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:7315)
+    at $n.handleAndLogRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at l (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at getAllClients (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:21)
+2024-12-05T21:17:54.615Z [error] : [j6kbzr] Prisma error: 
+Metadata: {
+  "code": "P2022",
+  "meta": {
+    "modelName": "Client",
+    "column": "Client.address"
+  },
+  "clientVersion": "5.22.0"
+}
+2024-12-05T21:17:59.183Z [error] : [j7kkeg] Error in getAllClients: 
+Error: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+Stack: PrismaClientKnownRequestError: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+    at $n.handleRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:7315)
+    at $n.handleAndLogRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at l (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at getAllClients (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:21)
+2024-12-05T21:17:59.183Z [error] : [j7kkeg] Prisma error: 
+Metadata: {
+  "code": "P2022",
+  "meta": {
+    "modelName": "Client",
+    "column": "Client.address"
+  },
+  "clientVersion": "5.22.0"
+}
+2024-12-05T21:17:59.185Z [error] : [wdb5nm] Error in getAllClients: 
+Error: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+Stack: PrismaClientKnownRequestError: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+    at $n.handleRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:7315)
+    at $n.handleAndLogRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at l (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at getAllClients (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:21)
+2024-12-05T21:17:59.185Z [error] : [wdb5nm] Prisma error: 
+Metadata: {
+  "code": "P2022",
+  "meta": {
+    "modelName": "Client",
+    "column": "Client.address"
+  },
+  "clientVersion": "5.22.0"
+}
+2024-12-05T21:21:49.705Z [error] : [q4hlg4] Error in getAllClients: 
+Error: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+Stack: PrismaClientKnownRequestError: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+    at $n.handleRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:7315)
+    at $n.handleAndLogRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at l (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at getAllClients (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:21)
+2024-12-05T21:21:49.706Z [error] : [q4hlg4] Prisma error: 
+Metadata: {
+  "code": "P2022",
+  "meta": {
+    "modelName": "Client",
+    "column": "Client.address"
+  },
+  "clientVersion": "5.22.0"
+}
+2024-12-05T21:21:49.710Z [error] : [b7rla] Error in getAllClients: 
+Error: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+Stack: PrismaClientKnownRequestError: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+    at $n.handleRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:7315)
+    at $n.handleAndLogRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at l (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at getAllClients (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:21)
+2024-12-05T21:21:49.710Z [error] : [b7rla] Prisma error: 
+Metadata: {
+  "code": "P2022",
+  "meta": {
+    "modelName": "Client",
+    "column": "Client.address"
+  },
+  "clientVersion": "5.22.0"
+}
+2024-12-05T21:22:06.907Z [error] : [kdlwt] Error in getAllClients: 
+Error: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+Stack: PrismaClientKnownRequestError: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+    at $n.handleRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:7315)
+    at $n.handleAndLogRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at l (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at getAllClients (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:21)
+2024-12-05T21:22:06.907Z [error] : [kdlwt] Prisma error: 
+Metadata: {
+  "code": "P2022",
+  "meta": {
+    "modelName": "Client",
+    "column": "Client.address"
+  },
+  "clientVersion": "5.22.0"
+}
+2024-12-05T21:22:06.910Z [error] : [e2uv4f] Error in getAllClients: 
+Error: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+Stack: PrismaClientKnownRequestError: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+    at $n.handleRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:7315)
+    at $n.handleAndLogRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at l (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at getAllClients (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:21)
+2024-12-05T21:22:06.910Z [error] : [e2uv4f] Prisma error: 
+Metadata: {
+  "code": "P2022",
+  "meta": {
+    "modelName": "Client",
+    "column": "Client.address"
+  },
+  "clientVersion": "5.22.0"
+}
+2024-12-06T22:19:23.660Z [error] : [wdrr0k] Error in getAllClients: 
+Error: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+Stack: PrismaClientKnownRequestError: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+    at $n.handleRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:7315)
+    at $n.handleAndLogRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at l (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at getAllClients (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:21)
+2024-12-06T22:19:23.660Z [error] : [wdrr0k] Prisma error: 
+Metadata: {
+  "code": "P2022",
+  "meta": {
+    "modelName": "Client",
+    "column": "Client.address"
+  },
+  "clientVersion": "5.22.0"
+}
+2024-12-06T22:19:23.677Z [error] : [wvp9j] Error in getAllClients: 
+Error: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+Stack: PrismaClientKnownRequestError: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+    at $n.handleRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:7315)
+    at $n.handleAndLogRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at l (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at getAllClients (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:21)
+2024-12-06T22:19:23.677Z [error] : [wvp9j] Prisma error: 
+Metadata: {
+  "code": "P2022",
+  "meta": {
+    "modelName": "Client",
+    "column": "Client.address"
+  },
+  "clientVersion": "5.22.0"
+}
+2024-12-06T22:19:40.996Z [error] : [xi8po] Error in getAllClients: 
+Error: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+Stack: PrismaClientKnownRequestError: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+    at $n.handleRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:7315)
+    at $n.handleAndLogRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at l (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at getAllClients (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:21)
+2024-12-06T22:19:40.997Z [error] : [xi8po] Prisma error: 
+Metadata: {
+  "code": "P2022",
+  "meta": {
+    "modelName": "Client",
+    "column": "Client.address"
+  },
+  "clientVersion": "5.22.0"
+}
+2024-12-06T22:19:40.998Z [error] : [zv9uze] Error in getAllClients: 
+Error: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+Stack: PrismaClientKnownRequestError: 
+Invalid `prisma.client.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:41
+
+  23   throw new Error('Database connection test failed');
+  24 });
+  25 
+→ 26 const clients = await prisma.client.findMany(
+The column `Client.address` does not exist in the current database.
+    at $n.handleRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:7315)
+    at $n.handleAndLogRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at l (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at getAllClients (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:26:21)
+2024-12-06T22:19:40.998Z [error] : [zv9uze] Prisma error: 
+Metadata: {
+  "code": "P2022",
+  "meta": {
+    "modelName": "Client",
+    "column": "Client.address"
+  },
+  "clientVersion": "5.22.0"
+}
+2024-12-06T22:20:01.232Z [error] : [88fgiz] Error in createClient: 
+Error: 
+Invalid `prisma.client.create()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:141:40
+
+  138   throw new Error('Database connection test failed');
+  139 });
+  140 
+→ 141 const client = await prisma.client.create(
+The column `address` does not exist in the current database.
+Stack: PrismaClientKnownRequestError: 
+Invalid `prisma.client.create()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:141:40
+
+  138   throw new Error('Database connection test failed');
+  139 });
+  140 
+→ 141 const client = await prisma.client.create(
+The column `address` does not exist in the current database.
+    at $n.handleRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:7315)
+    at $n.handleAndLogRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at l (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at createClient (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:141:20)
+2024-12-06T22:20:01.232Z [error] : [88fgiz] Prisma error: 
+Metadata: {
+  "code": "P2022",
+  "meta": {
+    "modelName": "Client",
+    "column": "address"
+  },
+  "clientVersion": "5.22.0"
+}
+2024-12-06T22:20:11.234Z [error] : [94djvq] Error in createClient: 
+Error: 
+Invalid `prisma.client.create()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:141:40
+
+  138   throw new Error('Database connection test failed');
+  139 });
+  140 
+→ 141 const client = await prisma.client.create(
+The column `address` does not exist in the current database.
+Stack: PrismaClientKnownRequestError: 
+Invalid `prisma.client.create()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:141:40
+
+  138   throw new Error('Database connection test failed');
+  139 });
+  140 
+→ 141 const client = await prisma.client.create(
+The column `address` does not exist in the current database.
+    at $n.handleRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:7315)
+    at $n.handleAndLogRequestError (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at l (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at createClient (c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\client.ts:141:20)
+2024-12-06T22:20:11.235Z [error] : [94djvq] Prisma error: 
+Metadata: {
+  "code": "P2022",
+  "meta": {
+    "modelName": "Client",
+    "column": "address"
+  },
+  "clientVersion": "5.22.0"
+}
+2024-12-06T22:39:34.666Z [error] : Error fetching services: 
+Invalid `prismaClient.service.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\services.ts:10:49
+
+   7 
+   8 export const getAllServices = async (req: Request, res: Response) => {
+   9   try {
+→ 10     const services = await prismaClient.service.findMany({
+           where: {
+             isActive: true,
+             ~~~~~~~~
+         ?   AND?: ServiceWhereInput | ServiceWhereInput[],
+         ?   OR?: ServiceWhereInput[],
+         ?   NOT?: ServiceWhereInput | ServiceWhereInput[],
+         ?   id?: StringFilter | String,
+         ?   name?: StringFilter | String,
+         ?   description?: StringNullableFilter | String | Null,
+         ?   duration?: IntFilter | Int,
+         ?   price?: FloatFilter | Float,
+         ?   createdAt?: DateTimeFilter | DateTime,
+         ?   updatedAt?: DateTimeFilter | DateTime,
+         ?   appointments?: AppointmentListRelationFilter
+           },
+           orderBy: {
+             name: "asc"
+           }
+         })
+
+Unknown argument `isActive`. Available options are marked with ?. 
+2024-12-06T22:39:34.683Z [error] : Error fetching services: 
+Invalid `prismaClient.service.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\services.ts:10:49
+
+   7 
+   8 export const getAllServices = async (req: Request, res: Response) => {
+   9   try {
+→ 10     const services = await prismaClient.service.findMany({
+           where: {
+             isActive: true,
+             ~~~~~~~~
+         ?   AND?: ServiceWhereInput | ServiceWhereInput[],
+         ?   OR?: ServiceWhereInput[],
+         ?   NOT?: ServiceWhereInput | ServiceWhereInput[],
+         ?   id?: StringFilter | String,
+         ?   name?: StringFilter | String,
+         ?   description?: StringNullableFilter | String | Null,
+         ?   duration?: IntFilter | Int,
+         ?   price?: FloatFilter | Float,
+         ?   createdAt?: DateTimeFilter | DateTime,
+         ?   updatedAt?: DateTimeFilter | DateTime,
+         ?   appointments?: AppointmentListRelationFilter
+           },
+           orderBy: {
+             name: "asc"
+           }
+         })
+
+Unknown argument `isActive`. Available options are marked with ?. 
+2024-12-06T22:40:12.000Z [error] : Error fetching services: 
+Invalid `prismaClient.service.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\services.ts:10:49
+
+   7 
+   8 export const getAllServices = async (req: Request, res: Response) => {
+   9   try {
+→ 10     const services = await prismaClient.service.findMany({
+           where: {
+             isActive: true,
+             ~~~~~~~~
+         ?   AND?: ServiceWhereInput | ServiceWhereInput[],
+         ?   OR?: ServiceWhereInput[],
+         ?   NOT?: ServiceWhereInput | ServiceWhereInput[],
+         ?   id?: StringFilter | String,
+         ?   name?: StringFilter | String,
+         ?   description?: StringNullableFilter | String | Null,
+         ?   duration?: IntFilter | Int,
+         ?   price?: FloatFilter | Float,
+         ?   createdAt?: DateTimeFilter | DateTime,
+         ?   updatedAt?: DateTimeFilter | DateTime,
+         ?   appointments?: AppointmentListRelationFilter
+           },
+           orderBy: {
+             name: "asc"
+           }
+         })
+
+Unknown argument `isActive`. Available options are marked with ?. 
+2024-12-06T22:40:12.031Z [error] : Error fetching services: 
+Invalid `prismaClient.service.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\services.ts:10:49
+
+   7 
+   8 export const getAllServices = async (req: Request, res: Response) => {
+   9   try {
+→ 10     const services = await prismaClient.service.findMany({
+           where: {
+             isActive: true,
+             ~~~~~~~~
+         ?   AND?: ServiceWhereInput | ServiceWhereInput[],
+         ?   OR?: ServiceWhereInput[],
+         ?   NOT?: ServiceWhereInput | ServiceWhereInput[],
+         ?   id?: StringFilter | String,
+         ?   name?: StringFilter | String,
+         ?   description?: StringNullableFilter | String | Null,
+         ?   duration?: IntFilter | Int,
+         ?   price?: FloatFilter | Float,
+         ?   createdAt?: DateTimeFilter | DateTime,
+         ?   updatedAt?: DateTimeFilter | DateTime,
+         ?   appointments?: AppointmentListRelationFilter
+           },
+           orderBy: {
+             name: "asc"
+           }
+         })
+
+Unknown argument `isActive`. Available options are marked with ?. 
+2024-12-06T22:42:19.994Z [error] : Error fetching services: 
+Invalid `prismaClient.service.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\services.ts:10:49
+
+   7 
+   8 export const getAllServices = async (req: Request, res: Response) => {
+   9   try {
+→ 10     const services = await prismaClient.service.findMany({
+           where: {
+             isActive: true,
+             ~~~~~~~~
+         ?   AND?: ServiceWhereInput | ServiceWhereInput[],
+         ?   OR?: ServiceWhereInput[],
+         ?   NOT?: ServiceWhereInput | ServiceWhereInput[],
+         ?   id?: StringFilter | String,
+         ?   name?: StringFilter | String,
+         ?   description?: StringNullableFilter | String | Null,
+         ?   duration?: IntFilter | Int,
+         ?   price?: FloatFilter | Float,
+         ?   createdAt?: DateTimeFilter | DateTime,
+         ?   updatedAt?: DateTimeFilter | DateTime,
+         ?   appointments?: AppointmentListRelationFilter
+           },
+           orderBy: {
+             name: "asc"
+           }
+         })
+
+Unknown argument `isActive`. Available options are marked with ?. 
+2024-12-06T22:42:20.013Z [error] : Error fetching services: 
+Invalid `prismaClient.service.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\services.ts:10:49
+
+   7 
+   8 export const getAllServices = async (req: Request, res: Response) => {
+   9   try {
+→ 10     const services = await prismaClient.service.findMany({
+           where: {
+             isActive: true,
+             ~~~~~~~~
+         ?   AND?: ServiceWhereInput | ServiceWhereInput[],
+         ?   OR?: ServiceWhereInput[],
+         ?   NOT?: ServiceWhereInput | ServiceWhereInput[],
+         ?   id?: StringFilter | String,
+         ?   name?: StringFilter | String,
+         ?   description?: StringNullableFilter | String | Null,
+         ?   duration?: IntFilter | Int,
+         ?   price?: FloatFilter | Float,
+         ?   createdAt?: DateTimeFilter | DateTime,
+         ?   updatedAt?: DateTimeFilter | DateTime,
+         ?   appointments?: AppointmentListRelationFilter
+           },
+           orderBy: {
+             name: "asc"
+           }
+         })
+
+Unknown argument `isActive`. Available options are marked with ?. 
+2024-12-06T22:46:33.894Z [error] : Error fetching services: 
+Invalid `prismaClient.service.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\services.ts:10:49
+
+   7 
+   8 export const getAllServices = async (req: Request, res: Response) => {
+   9   try {
+→ 10     const services = await prismaClient.service.findMany({
+           where: {
+             isActive: true,
+             ~~~~~~~~
+         ?   AND?: ServiceWhereInput | ServiceWhereInput[],
+         ?   OR?: ServiceWhereInput[],
+         ?   NOT?: ServiceWhereInput | ServiceWhereInput[],
+         ?   id?: StringFilter | String,
+         ?   name?: StringFilter | String,
+         ?   description?: StringNullableFilter | String | Null,
+         ?   duration?: IntFilter | Int,
+         ?   price?: FloatFilter | Float,
+         ?   createdAt?: DateTimeFilter | DateTime,
+         ?   updatedAt?: DateTimeFilter | DateTime,
+         ?   appointments?: AppointmentListRelationFilter
+           },
+           orderBy: {
+             name: "asc"
+           }
+         })
+
+Unknown argument `isActive`. Available options are marked with ?. 
+2024-12-06T22:46:33.909Z [error] : Error fetching services: 
+Invalid `prismaClient.service.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\services.ts:10:49
+
+   7 
+   8 export const getAllServices = async (req: Request, res: Response) => {
+   9   try {
+→ 10     const services = await prismaClient.service.findMany({
+           where: {
+             isActive: true,
+             ~~~~~~~~
+         ?   AND?: ServiceWhereInput | ServiceWhereInput[],
+         ?   OR?: ServiceWhereInput[],
+         ?   NOT?: ServiceWhereInput | ServiceWhereInput[],
+         ?   id?: StringFilter | String,
+         ?   name?: StringFilter | String,
+         ?   description?: StringNullableFilter | String | Null,
+         ?   duration?: IntFilter | Int,
+         ?   price?: FloatFilter | Float,
+         ?   createdAt?: DateTimeFilter | DateTime,
+         ?   updatedAt?: DateTimeFilter | DateTime,
+         ?   appointments?: AppointmentListRelationFilter
+           },
+           orderBy: {
+             name: "asc"
+           }
+         })
+
+Unknown argument `isActive`. Available options are marked with ?. 
+2024-12-06T22:48:39.304Z [error] : Error fetching services: 
+Invalid `prismaClient.service.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\services.ts:10:49
+
+   7 
+   8 export const getAllServices = async (req: Request, res: Response) => {
+   9   try {
+→ 10     const services = await prismaClient.service.findMany({
+           where: {
+             isActive: true,
+             ~~~~~~~~
+         ?   AND?: ServiceWhereInput | ServiceWhereInput[],
+         ?   OR?: ServiceWhereInput[],
+         ?   NOT?: ServiceWhereInput | ServiceWhereInput[],
+         ?   id?: StringFilter | String,
+         ?   name?: StringFilter | String,
+         ?   description?: StringNullableFilter | String | Null,
+         ?   duration?: IntFilter | Int,
+         ?   price?: FloatFilter | Float,
+         ?   createdAt?: DateTimeFilter | DateTime,
+         ?   updatedAt?: DateTimeFilter | DateTime,
+         ?   appointments?: AppointmentListRelationFilter
+           },
+           orderBy: {
+             name: "asc"
+           }
+         })
+
+Unknown argument `isActive`. Available options are marked with ?. 
+2024-12-06T22:48:39.323Z [error] : Error fetching services: 
+Invalid `prismaClient.service.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\services.ts:10:49
+
+   7 
+   8 export const getAllServices = async (req: Request, res: Response) => {
+   9   try {
+→ 10     const services = await prismaClient.service.findMany({
+           where: {
+             isActive: true,
+             ~~~~~~~~
+         ?   AND?: ServiceWhereInput | ServiceWhereInput[],
+         ?   OR?: ServiceWhereInput[],
+         ?   NOT?: ServiceWhereInput | ServiceWhereInput[],
+         ?   id?: StringFilter | String,
+         ?   name?: StringFilter | String,
+         ?   description?: StringNullableFilter | String | Null,
+         ?   duration?: IntFilter | Int,
+         ?   price?: FloatFilter | Float,
+         ?   createdAt?: DateTimeFilter | DateTime,
+         ?   updatedAt?: DateTimeFilter | DateTime,
+         ?   appointments?: AppointmentListRelationFilter
+           },
+           orderBy: {
+             name: "asc"
+           }
+         })
+
+Unknown argument `isActive`. Available options are marked with ?. 
+2024-12-06T22:49:57.189Z [error] : Error fetching services: 
+Invalid `prismaClient.service.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\services.ts:10:49
+
+   7 
+   8 export const getAllServices = async (req: Request, res: Response) => {
+   9   try {
+→ 10     const services = await prismaClient.service.findMany({
+           where: {
+             isActive: true,
+             ~~~~~~~~
+         ?   AND?: ServiceWhereInput | ServiceWhereInput[],
+         ?   OR?: ServiceWhereInput[],
+         ?   NOT?: ServiceWhereInput | ServiceWhereInput[],
+         ?   id?: StringFilter | String,
+         ?   name?: StringFilter | String,
+         ?   description?: StringNullableFilter | String | Null,
+         ?   duration?: IntFilter | Int,
+         ?   price?: FloatFilter | Float,
+         ?   createdAt?: DateTimeFilter | DateTime,
+         ?   updatedAt?: DateTimeFilter | DateTime,
+         ?   appointments?: AppointmentListRelationFilter
+           },
+           orderBy: {
+             name: "asc"
+           }
+         })
+
+Unknown argument `isActive`. Available options are marked with ?. 
+2024-12-06T22:49:57.225Z [error] : Error fetching services: 
+Invalid `prismaClient.service.findMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\services.ts:10:49
+
+   7 
+   8 export const getAllServices = async (req: Request, res: Response) => {
+   9   try {
+→ 10     const services = await prismaClient.service.findMany({
+           where: {
+             isActive: true,
+             ~~~~~~~~
+         ?   AND?: ServiceWhereInput | ServiceWhereInput[],
+         ?   OR?: ServiceWhereInput[],
+         ?   NOT?: ServiceWhereInput | ServiceWhereInput[],
+         ?   id?: StringFilter | String,
+         ?   name?: StringFilter | String,
+         ?   description?: StringNullableFilter | String | Null,
+         ?   duration?: IntFilter | Int,
+         ?   price?: FloatFilter | Float,
+         ?   createdAt?: DateTimeFilter | DateTime,
+         ?   updatedAt?: DateTimeFilter | DateTime,
+         ?   appointments?: AppointmentListRelationFilter
+           },
+           orderBy: {
+             name: "asc"
+           }
+         })
+
+Unknown argument `isActive`. Available options are marked with ?. 
+2024-12-07T02:51:53.019Z [error] : Error updating working hours: 
+Invalid `prisma.workingHours.createMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\schedule.ts:31:52
+
+  28 });
+  29 
+  30 // Create new working hours
+→ 31 const workingHours = await prisma.workingHours.createMany(
+Unique constraint failed on the fields: (`id`) 
+2024-12-07T20:52:28.356Z [error] : Error checking availability: Value uppercase out of range for Date.prototype.toLocaleString options property weekday 
+2024-12-07T20:52:36.970Z [error] : Error checking availability: Value uppercase out of range for Date.prototype.toLocaleString options property weekday 
+2024-12-07T20:53:32.546Z [error] : Error checking availability: Value uppercase out of range for Date.prototype.toLocaleString options property weekday 
+2024-12-13T21:20:19.175Z [error] : JWT verification failed: jwt expired 
+2024-12-13T21:20:19.178Z [error] : JWT verification failed: jwt expired 
+2024-12-13T21:20:19.183Z [error] : JWT verification failed: jwt expired 
+2024-12-13T21:20:19.188Z [error] : JWT verification failed: jwt expired 
+2024-12-13T21:20:19.191Z [error] : JWT verification failed: jwt expired 
+2024-12-13T21:20:19.194Z [error] : JWT verification failed: jwt expired 
+2024-12-13T21:47:04.687Z [error] : Error updating working hours: 
+Invalid `prisma.workingHours.createMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\schedule.ts:31:52
+
+  28 });
+  29 
+  30 // Create new working hours
+→ 31 const workingHours = await prisma.workingHours.createMany(
+Unique constraint failed on the fields: (`id`) 
+2024-12-13T21:50:00.515Z [error] : Error updating working hours: 
+Invalid `prisma.workingHours.createMany()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\schedule.ts:31:52
+
+  28 });
+  29 
+  30 // Create new working hours
+→ 31 const workingHours = await prisma.workingHours.createMany(
+Unique constraint failed on the fields: (`id`) 
+2024-12-13T22:21:00.829Z [error] : JWT verification failed: jwt expired 
+2024-12-13T23:18:38.345Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:18:54.207Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:18:54.212Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:20:30.354Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:21:06.560Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:21:06.577Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:21:16.661Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:21:16.672Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:22:16.668Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:23:17.312Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:23:41.328Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:24:13.199Z [error] : JWT verification failed: jwt expired 
+2024-12-13T23:24:13.203Z [error] : JWT verification failed: jwt expired 
+2024-12-13T23:24:13.208Z [error] : JWT verification failed: jwt expired 
+2024-12-13T23:24:13.212Z [error] : JWT verification failed: jwt expired 
+2024-12-13T23:24:13.217Z [error] : JWT verification failed: jwt expired 
+2024-12-13T23:24:13.222Z [error] : JWT verification failed: jwt expired 
+2024-12-13T23:24:20.060Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:24:20.069Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:24:41.728Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:24:41.739Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:28:04.963Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:28:05.001Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:28:50.318Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:28:50.328Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:29:24.315Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:29:55.538Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:29:55.560Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:30:56.322Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:31:23.327Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:31:23.331Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:31:23.336Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:31:23.339Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:31:44.107Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:31:44.113Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:31:44.116Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:31:44.118Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:32:44.303Z [error] : JWT verification failed: jwt malformed 
+2024-12-13T23:56:22.668Z [error] : Error creating appointment: Cannot read properties of undefined (reading 'toLocaleDateString') 
+2024-12-14T01:36:47.823Z [error] : [77lro] Error fetching client history: 
+Invalid `prisma.appointment.findMany()` invocation in
+C:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\clients.ts:202:52
+
+  199 }
+  200 
+  201 logger.debug(`[${requestId}] Fetching client history`);
+→ 202 const clientHistory = await prisma.appointment.findMany({
+        where: {
+          clientId: "1aa89210-7305-45b6-85b6-ad5981858d7d"
+        },
+        include: {
+          service: true,
+          therapist: true,
+          comments: true,
+          ~~~~~~~~
+      ?   client?: true
+        },
+        orderBy: {
+          startTime: "desc"
+        }
+      })
+
+Unknown field `comments` for include statement on model `Appointment`. Available options are marked with ?. 
+2024-12-14T01:36:55.296Z [error] : [lunuam] Error fetching client history: 
+Invalid `prisma.appointment.findMany()` invocation in
+C:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\clients.ts:202:52
+
+  199 }
+  200 
+  201 logger.debug(`[${requestId}] Fetching client history`);
+→ 202 const clientHistory = await prisma.appointment.findMany({
+        where: {
+          clientId: "1aa89210-7305-45b6-85b6-ad5981858d7d"
+        },
+        include: {
+          service: true,
+          therapist: true,
+          comments: true,
+          ~~~~~~~~
+      ?   client?: true
+        },
+        orderBy: {
+          startTime: "desc"
+        }
+      })
+
+Unknown field `comments` for include statement on model `Appointment`. Available options are marked with ?. 
+2024-12-14T03:07:40.718Z [error] : JWT verification failed: jwt malformed 
+2024-12-14T03:07:40.728Z [error] : JWT verification failed: jwt malformed 
+2024-12-14T03:08:03.003Z [error] : JWT verification failed: jwt malformed 
+2024-12-14T03:08:03.011Z [error] : JWT verification failed: jwt malformed 
+2024-12-14T21:30:49.562Z [error] : Error updating working hours: 
+Invalid `tx.workingHours.createMany()` invocation in
+C:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\schedule.ts:33:29
+
+  30 });
+  31 
+  32 // Create new working hours
+→ 33 await tx.workingHours.createMany(
+Unique constraint failed on the fields: (`id`) 
+2024-12-14T21:40:18.145Z [error] : Error updating working hours: 
+Invalid `tx.workingHours.createMany()` invocation in
+C:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\schedule.ts:33:29
+
+  30 });
+  31 
+  32 // Create new working hours
+→ 33 await tx.workingHours.createMany(
+Unique constraint failed on the fields: (`id`) 
+2024-12-14T21:44:11.680Z [error] : Error updating working hours: 
+Invalid `tx.workingHours.createMany()` invocation in
+C:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\schedule.ts:33:29
+
+  30 });
+  31 
+  32 // Create new working hours
+→ 33 await tx.workingHours.createMany(
+Unique constraint failed on the fields: (`id`) 
+2024-12-15T02:33:30.939Z [error] : Error fetching working hours: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T02:33:30.958Z [error] : Error fetching working hours: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T02:33:36.616Z [error] : Error fetching working hours: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T02:33:36.626Z [error] : Error fetching schedule exceptions: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T02:33:36.633Z [error] : Error fetching working hours: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T02:33:36.643Z [error] : Error fetching schedule exceptions: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T02:33:36.652Z [error] : Error fetching working hours: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T02:33:36.660Z [error] : Error fetching working hours: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T02:33:43.589Z [error] : Error fetching working hours: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T02:33:43.607Z [error] : Error fetching working hours: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T02:33:53.749Z [error] : Error fetching working hours: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T02:33:53.769Z [error] : Error fetching working hours: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T02:37:51.621Z [error] : Error updating user: 
+Invalid `prisma.user.update()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\users.ts:63:36
+
+  60 try {
+  61   const { id } = req.params;
+  62   const { email, name, role } = req.body;
+→ 63   const user = await prisma.user.update({
+         where: {
+           id: 17
+               ~~
+         },
+         data: {
+           email: "ana@example.com",
+           name: "Ana Petrović",
+           role: "THERAPIST"
+         },
+         select: {
+           id: true,
+           email: true,
+           name: true,
+           role: true,
+           createdAt: true,
+           updatedAt: true
+         }
+       })
+
+Argument `id`: Invalid value provided. Expected String, provided Int. 
+2024-12-15T02:38:02.377Z [error] : Error updating user: 
+Invalid `prisma.user.update()` invocation in
+c:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\users.ts:63:36
+
+  60 try {
+  61   const { id } = req.params;
+  62   const { email, name, role } = req.body;
+→ 63   const user = await prisma.user.update({
+         where: {
+           id: 17
+               ~~
+         },
+         data: {
+           email: "ana@example.com",
+           name: "Ana Petrović",
+           role: "THERAPIST"
+         },
+         select: {
+           id: true,
+           email: true,
+           name: true,
+           role: true,
+           createdAt: true,
+           updatedAt: true
+         }
+       })
+
+Argument `id`: Invalid value provided. Expected String, provided Int. 
+2024-12-15T14:46:01.956Z [error] : Database error while checking availability: Cannot read properties of undefined (reading 'findFirst') 
+2024-12-15T14:46:01.957Z [error] : Error checking availability: Cannot read properties of undefined (reading 'findFirst') 
+2024-12-15T14:47:15.812Z [error] : Database error while checking availability: Cannot read properties of undefined (reading 'findFirst') 
+2024-12-15T14:47:15.813Z [error] : Error checking availability: Cannot read properties of undefined (reading 'findFirst') 
+2024-12-15T14:48:02.724Z [error] : Database error while checking availability: Cannot read properties of undefined (reading 'findFirst') 
+2024-12-15T14:48:02.724Z [error] : Error checking availability: Cannot read properties of undefined (reading 'findFirst') 
+2024-12-15T14:51:41.574Z [error] : Database error while checking availability: Cannot read properties of undefined (reading 'findFirst') 
+2024-12-15T14:51:41.575Z [error] : Error checking availability: Cannot read properties of undefined (reading 'findFirst') 
+2024-12-15T15:11:31.136Z [error] : Error fetching schedule exceptions: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T15:11:31.177Z [error] : Error fetching schedule exceptions: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T15:12:02.788Z [error] : Database error while updating working hours: 
+Invalid `tx.scheduleSettings.create()` invocation in
+C:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\schedule.ts:95:31
+
+  92 
+  93 return await Promise.all(
+  94   sanitizedData.map(data =>
+→ 95     tx.scheduleSettings.create(
+Unique constraint failed on the fields: (`id`) 
+2024-12-15T15:12:05.524Z [error] : Error fetching schedule exceptions: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T15:12:05.536Z [error] : Error fetching schedule exceptions: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T15:15:47.859Z [error] : Error deleting therapist: 
+Invalid `prisma.therapist.delete()` invocation in
+C:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\therapists.ts:121:36
+
+  118 }
+  119 
+  120 // Delete therapist
+→ 121 await prisma.therapist.delete(
+Foreign key constraint violated: `ScheduleSettings_therapistId_fkey (index)` 
+2024-12-15T15:19:17.771Z [error] : Error deleting therapist: 
+Invalid `prisma.therapist.findUnique()` invocation in
+C:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\therapists.ts:112:48
+
+  109 // Start a transaction to check and delete therapist and user
+  110 await prisma.$transaction(async (prisma) => {
+  111   // Get therapist and check for appointments
+→ 112   const therapist = await prisma.therapist.findUnique({
+          where: {
+            id: "092c7173-5506-4037-8f16-eb5c34dfd0f1"
+          },
+          include: {
+            appointments: {
+              where: {
+                OR: [
+                  {
+                    status: "SCHEDULED"
+                  },
+                  {
+                    status: "CONFIRMED"
+                  },
+                  {
+                    status: "PENDING"
+                  }
+                ]
+              }
+            },
+            workingHours: true
+          }
+        })
+
+Invalid value for argument `status`. Expected Status. 
+2024-12-15T15:19:27.027Z [error] : Error deleting therapist: 
+Invalid `prisma.therapist.findUnique()` invocation in
+C:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\therapists.ts:112:48
+
+  109 // Start a transaction to check and delete therapist and user
+  110 await prisma.$transaction(async (prisma) => {
+  111   // Get therapist and check for appointments
+→ 112   const therapist = await prisma.therapist.findUnique({
+          where: {
+            id: "092c7173-5506-4037-8f16-eb5c34dfd0f1"
+          },
+          include: {
+            appointments: {
+              where: {
+                OR: [
+                  {
+                    status: "SCHEDULED"
+                  },
+                  {
+                    status: "CONFIRMED"
+                  },
+                  {
+                    status: "PENDING"
+                  }
+                ]
+              }
+            },
+            workingHours: true
+          }
+        })
+
+Invalid value for argument `status`. Expected Status. 
+2024-12-15T15:21:34.820Z [error] : Error deleting therapist: 
+Invalid `prisma.therapist.findUnique()` invocation in
+C:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\therapists.ts:112:48
+
+  109 // Start a transaction to check and delete therapist and user
+  110 await prisma.$transaction(async (prisma) => {
+  111   // Get therapist and check for appointments
+→ 112   const therapist = await prisma.therapist.findUnique({
+          where: {
+            id: "092c7173-5506-4037-8f16-eb5c34dfd0f1"
+          },
+          include: {
+            appointments: {
+              where: {
+                OR: [
+                  {
+                    status: "SCHEDULED"
+                  },
+                  {
+                    status: "CONFIRMED"
+                  },
+                  {
+                    status: "IN_PROGRESS"
+                  },
+                  {
+                    status: undefined
+                  }
+                ]
+              }
+            },
+            workingHours: true,
+            ~~~~~~~~~~~~
+        ?   user?: true,
+        ?   scheduleSettings?: true
+          }
+        })
+
+Unknown field `workingHours` for include statement on model `Therapist`. Available options are marked with ?. 
+2024-12-15T15:21:40.345Z [error] : Error deleting therapist: 
+Invalid `prisma.therapist.findUnique()` invocation in
+C:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\therapists.ts:112:48
+
+  109 // Start a transaction to check and delete therapist and user
+  110 await prisma.$transaction(async (prisma) => {
+  111   // Get therapist and check for appointments
+→ 112   const therapist = await prisma.therapist.findUnique({
+          where: {
+            id: "092c7173-5506-4037-8f16-eb5c34dfd0f1"
+          },
+          include: {
+            appointments: {
+              where: {
+                OR: [
+                  {
+                    status: "SCHEDULED"
+                  },
+                  {
+                    status: "CONFIRMED"
+                  },
+                  {
+                    status: "IN_PROGRESS"
+                  },
+                  {
+                    status: undefined
+                  }
+                ]
+              }
+            },
+            workingHours: true,
+            ~~~~~~~~~~~~
+        ?   user?: true,
+        ?   scheduleSettings?: true
+          }
+        })
+
+Unknown field `workingHours` for include statement on model `Therapist`. Available options are marked with ?. 
+2024-12-15T15:34:00.845Z [error] : Error fetching schedule exceptions: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T15:34:00.875Z [error] : Error fetching schedule exceptions: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T15:34:19.145Z [error] : Database error while updating working hours: 
+Invalid `tx.scheduleSettings.create()` invocation in
+C:\Users\sasao\Documents\Programiranje\salon-management-system\server\src\controllers\schedule.ts:95:31
+
+  92 
+  93 return await Promise.all(
+  94   sanitizedData.map(data =>
+→ 95     tx.scheduleSettings.create(
+Unique constraint failed on the fields: (`id`) 
+2024-12-15T15:34:21.228Z [error] : Error fetching schedule exceptions: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T15:34:21.235Z [error] : Error fetching schedule exceptions: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T15:36:40.383Z [error] : Error fetching schedule exceptions: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T15:46:03.163Z [error] : Error fetching schedule exceptions: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T15:46:03.192Z [error] : Error fetching schedule exceptions: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T15:48:35.394Z [error] : Error fetching schedule exceptions: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T15:48:35.429Z [error] : Error fetching schedule exceptions: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T15:49:05.976Z [error] : Error fetching schedule exceptions: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T15:49:05.983Z [error] : Error fetching schedule exceptions: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T15:51:18.528Z [error] : Error fetching schedule exceptions: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T15:51:18.545Z [error] : Error fetching schedule exceptions: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T15:51:48.842Z [error] : Error fetching schedule exceptions: Cannot read properties of undefined (reading 'findMany') 
+2024-12-15T15:51:48.885Z [error] : Error fetching schedule exceptions: Cannot read properties of undefined (reading 'findMany') 
