@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: salon-management-backend
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+    buildFilter:
+      paths:
+        - src/**/*.ts
+        - package.json
+        - package-lock.json
+        - tsconfig.json
+        - prisma/**/*

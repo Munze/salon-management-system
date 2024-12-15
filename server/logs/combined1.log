@@ -53755,3 +53755,2175 @@ Metadata: {
 2024-12-15T19:22:39.908Z [info] : Client URL: http://localhost:5173 
 2024-12-15T19:22:39.909Z [info] : Available routes: 
 2024-12-15T19:22:39.909Z [info] : GET /api/test 
+2024-12-15T19:22:49.948Z [info] : [DEBUG] GET /api/analytics 
+2024-12-15T19:22:49.949Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"b50-bTikJhp950Kzy7vHXX6NBcGqOXU\""
+}
+2024-12-15T19:22:49.951Z [debug] : Request body: 
+2024-12-15T19:22:49.952Z [info] : Authenticating request to: GET / 
+2024-12-15T19:22:49.952Z [debug] : Auth header: Present 
+2024-12-15T19:22:49.955Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T19:22:50.060Z [info] : [DEBUG] GET /api/analytics 
+2024-12-15T19:22:50.061Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"b3b-C+RUQ9SCnIyxViNSv9RzcxGDp9E\""
+}
+2024-12-15T19:22:50.062Z [debug] : Request body: 
+2024-12-15T19:22:50.063Z [info] : Authenticating request to: GET / 
+2024-12-15T19:22:50.063Z [debug] : Auth header: Present 
+2024-12-15T19:22:50.065Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T19:22:56.763Z [info] : [DEBUG] GET /api/analytics 
+2024-12-15T19:22:56.764Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"6ae-a7WaCfSaISak3m+EY0Jnv8EOKCw\""
+}
+2024-12-15T19:22:56.766Z [debug] : Request body: 
+2024-12-15T19:22:56.767Z [info] : Authenticating request to: GET / 
+2024-12-15T19:22:56.767Z [debug] : Auth header: Present 
+2024-12-15T19:22:56.768Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T19:43:37.942Z [warn] : SendGrid API key not configured or invalid. Email notifications will be disabled. 
+2024-12-15T19:43:38.736Z [info] : Successfully connected to the database 
+2024-12-15T19:43:38.736Z [info] : Successfully connected to the database 
+2024-12-15T19:43:38.760Z [info] : Reminder scheduler started 
+2024-12-15T19:43:38.763Z [info] : Server is running on port 3000 
+2024-12-15T19:43:38.763Z [info] : Server URL: http://localhost:3000 
+2024-12-15T19:43:38.763Z [info] : Client URL: http://localhost:5173 
+2024-12-15T19:43:38.764Z [info] : Available routes: 
+2024-12-15T19:43:38.764Z [info] : GET /api/test 
+2024-12-15T19:47:51.778Z [warn] : SendGrid API key not configured or invalid. Email notifications will be disabled. 
+2024-12-15T19:47:52.581Z [info] : Successfully connected to the database 
+2024-12-15T19:47:52.582Z [info] : Successfully connected to the database 
+2024-12-15T19:47:52.605Z [info] : Reminder scheduler started 
+2024-12-15T19:47:52.607Z [info] : Server is running on port 3000 
+2024-12-15T19:47:52.608Z [info] : Server URL: http://localhost:3000 
+2024-12-15T19:47:52.608Z [info] : Client URL: http://localhost:5173 
+2024-12-15T19:47:52.609Z [info] : Available routes: 
+2024-12-15T19:47:52.609Z [info] : GET /api/test 
+2024-12-15T22:20:41.546Z [info] : [DEBUG] GET /api/analytics 
+2024-12-15T22:20:41.547Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"b3b-C+RUQ9SCnIyxViNSv9RzcxGDp9E\""
+}
+2024-12-15T22:20:41.549Z [debug] : Request body: 
+2024-12-15T22:20:41.550Z [info] : Authenticating request to: GET / 
+2024-12-15T22:20:41.550Z [debug] : Auth header: Present 
+2024-12-15T22:20:41.558Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:20:41.653Z [info] : [DEBUG] GET /api/analytics 
+2024-12-15T22:20:41.654Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"b3b-C+RUQ9SCnIyxViNSv9RzcxGDp9E\""
+}
+2024-12-15T22:20:41.655Z [debug] : Request body: 
+2024-12-15T22:20:41.655Z [info] : Authenticating request to: GET / 
+2024-12-15T22:20:41.656Z [debug] : Auth header: Present 
+2024-12-15T22:20:41.657Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:21:54.131Z [warn] : SendGrid API key not configured or invalid. Email notifications will be disabled. 
+2024-12-15T22:21:55.311Z [info] : Successfully connected to the database 
+2024-12-15T22:21:55.312Z [info] : Successfully connected to the database 
+2024-12-15T22:21:55.338Z [info] : Reminder scheduler started 
+2024-12-15T22:21:55.341Z [info] : Server is running on port 3000 
+2024-12-15T22:21:55.341Z [info] : Server URL: http://localhost:3000 
+2024-12-15T22:21:55.342Z [info] : Client URL: http://localhost:5173 
+2024-12-15T22:21:55.342Z [info] : Available routes: 
+2024-12-15T22:21:55.343Z [info] : GET /api/test 
+2024-12-15T22:31:11.273Z [warn] : SendGrid API key not configured or invalid. Email notifications will be disabled. 
+2024-12-15T22:31:12.300Z [info] : Successfully connected to the database 
+2024-12-15T22:31:12.300Z [info] : Successfully connected to the database 
+2024-12-15T22:31:12.324Z [info] : Reminder scheduler started 
+2024-12-15T22:31:12.326Z [info] : Server is running on port 3000 
+2024-12-15T22:31:12.326Z [info] : Server URL: http://localhost:3000 
+2024-12-15T22:31:12.327Z [info] : Client URL: http://localhost:5173 
+2024-12-15T22:31:12.327Z [info] : Available routes: 
+2024-12-15T22:31:12.327Z [info] : GET /api/test 
+2024-12-15T22:31:22.752Z [info] : [DEBUG] GET /api/analytics 
+2024-12-15T22:31:22.753Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"b3b-C+RUQ9SCnIyxViNSv9RzcxGDp9E\""
+}
+2024-12-15T22:31:22.755Z [debug] : Request body: 
+2024-12-15T22:31:22.757Z [info] : Authenticating request to: GET / 
+2024-12-15T22:31:22.757Z [debug] : Auth header: Present 
+2024-12-15T22:31:22.760Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:31:22.898Z [info] : [DEBUG] GET /api/analytics 
+2024-12-15T22:31:22.899Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"b3b-C+RUQ9SCnIyxViNSv9RzcxGDp9E\""
+}
+2024-12-15T22:31:22.900Z [debug] : Request body: 
+2024-12-15T22:31:22.901Z [info] : Authenticating request to: GET / 
+2024-12-15T22:31:22.901Z [debug] : Auth header: Present 
+2024-12-15T22:31:22.902Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:31:25.075Z [info] : [DEBUG] GET /api/dashboard/stats 
+2024-12-15T22:31:25.075Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "accept": "*/*",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"1a0-8MDO8tBp3K9Eb20szXZDe3vi/aA\""
+}
+2024-12-15T22:31:25.077Z [debug] : Request body: 
+2024-12-15T22:31:25.077Z [info] : Authenticating request to: GET /stats 
+2024-12-15T22:31:25.078Z [debug] : Auth header: Present 
+2024-12-15T22:31:25.079Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:31:25.083Z [info] : [DEBUG] GET /api/dashboard/stats 
+2024-12-15T22:31:25.083Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "accept": "*/*",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3"
+}
+2024-12-15T22:31:25.084Z [debug] : Request body: 
+2024-12-15T22:31:25.084Z [info] : Authenticating request to: GET /stats 
+2024-12-15T22:31:25.085Z [debug] : Auth header: Present 
+2024-12-15T22:31:25.086Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:31:25.088Z [info] : [DEBUG] GET /api/dashboard/stats 
+2024-12-15T22:31:25.089Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "accept": "*/*",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3"
+}
+2024-12-15T22:31:25.091Z [debug] : Request body: 
+2024-12-15T22:31:25.092Z [info] : Authenticating request to: GET /stats 
+2024-12-15T22:31:25.092Z [debug] : Auth header: Present 
+2024-12-15T22:31:25.093Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:31:25.096Z [info] : [DEBUG] GET /api/appointments/upcoming 
+2024-12-15T22:31:25.096Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"29a8-LxBLOcUZ4Jm+QmKe0qeF20BldGE\""
+}
+2024-12-15T22:31:25.098Z [debug] : Request body: 
+2024-12-15T22:31:25.098Z [info] : Authenticating request to: GET /upcoming 
+2024-12-15T22:31:25.098Z [debug] : Auth header: Present 
+2024-12-15T22:31:25.100Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:31:25.103Z [info] : [DEBUG] GET /api/therapists 
+2024-12-15T22:31:25.103Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"364-24gn7v65MHEe2qERattyY4r1pN4\""
+}
+2024-12-15T22:31:25.105Z [debug] : Request body: 
+2024-12-15T22:31:25.107Z [info] : [DEBUG] GET /api/clients 
+2024-12-15T22:31:25.108Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"2a6-BloH+0aNBRgp/iqiihh8FMMq/wM\""
+}
+2024-12-15T22:31:25.110Z [debug] : Request body: 
+2024-12-15T22:31:25.111Z [info] : Authenticating request to: GET / 
+2024-12-15T22:31:25.111Z [debug] : Auth header: Present 
+2024-12-15T22:31:25.113Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:31:25.114Z [info] : [DEBUG] GET /api/schedule/working-hours 
+2024-12-15T22:31:25.114Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"3a07-MjaRaothzn6ix6H5Qng4Cu1xOoc\""
+}
+2024-12-15T22:31:25.116Z [debug] : Request body: 
+2024-12-15T22:31:25.116Z [info] : Authenticating request to: GET /working-hours 
+2024-12-15T22:31:25.116Z [debug] : Auth header: Present 
+2024-12-15T22:31:25.117Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:31:25.118Z [debug] : Fetching working hours for therapist: 
+2024-12-15T22:31:25.143Z [debug] : Found working hours: 
+Metadata: {
+  "0": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-FRIDAY-1734277350358",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "FRIDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "1": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-FRIDAY",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "FRIDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "2": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-FRIDAY-1734278040943-c6cmo1zr4",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "FRIDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "3": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-FRIDAY-1734277354106",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "FRIDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "4": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-FRIDAY-1734277875473-hgmg4hfiq",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "FRIDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "5": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-FRIDAY-1734277539998-vm1nlbnmo",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "FRIDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "6": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-FRIDAY-1734277582424-1asm6aft1",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "FRIDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "7": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-FRIDAY-1734278133051-wcpz9not4",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "FRIDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "8": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-FRIDAY-1734277705588-d4zu5zum9",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "FRIDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "9": {
+    "id": "6de1eb7f-fbbc-484c-9e9f-fbe37b4bf31e-MONDAY-1734278133051-5ed9onef0",
+    "therapistId": "6de1eb7f-fbbc-484c-9e9f-fbe37b4bf31e",
+    "dayOfWeek": "MONDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Marija Jovanović",
+    "therapistEmail": "marija@example.com",
+    "specialties": [
+      "Manicure",
+      "Pedicure"
+    ]
+  },
+  "10": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-MONDAY",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "MONDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "11": {
+    "id": "716c9f64-8819-4b2d-9411-404bbe70d058-MONDAY-1734278040942-mcter7wsg",
+    "therapistId": "716c9f64-8819-4b2d-9411-404bbe70d058",
+    "dayOfWeek": "MONDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Jelena Nikolić",
+    "therapistEmail": "jelena@example.com",
+    "specialties": [
+      "Hair Styling",
+      "Hair Coloring"
+    ]
+  },
+  "12": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SATURDAY-1734277705588-39om4sepp",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SATURDAY",
+    "startTime": "00:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "13": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SATURDAY-1734277582424-x7gemzxim",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SATURDAY",
+    "startTime": "00:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "14": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SATURDAY",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SATURDAY",
+    "startTime": "00:00",
+    "endTime": "00:00",
+    "isWorkingDay": false,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "15": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SATURDAY-1734278040943-e9xsqni1r",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SATURDAY",
+    "startTime": "11:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "16": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SATURDAY-1734277350358",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SATURDAY",
+    "startTime": "00:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "17": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SATURDAY-1734277354106",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SATURDAY",
+    "startTime": "00:00",
+    "endTime": "00:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "18": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SATURDAY-1734277875473-pr3fveoew",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SATURDAY",
+    "startTime": "00:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "19": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SATURDAY-1734277539998-mwpt2zyt8",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SATURDAY",
+    "startTime": "00:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "20": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SATURDAY-1734278133051-cijguc8ku",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SATURDAY",
+    "startTime": "11:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "21": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SUNDAY-1734278133051-3hxdln2zc",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SUNDAY",
+    "startTime": "00:00",
+    "endTime": "00:00",
+    "isWorkingDay": false,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "22": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SUNDAY",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SUNDAY",
+    "startTime": "00:00",
+    "endTime": "00:00",
+    "isWorkingDay": false,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "23": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SUNDAY-1734277539998-wmq19bxk9",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SUNDAY",
+    "startTime": "00:00",
+    "endTime": "00:00",
+    "isWorkingDay": false,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "24": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SUNDAY-1734277705588-9e32sngih",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SUNDAY",
+    "startTime": "00:00",
+    "endTime": "00:00",
+    "isWorkingDay": false,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "25": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SUNDAY-1734278040943-llcg79hza",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SUNDAY",
+    "startTime": "00:00",
+    "endTime": "00:00",
+    "isWorkingDay": false,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "26": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-THURSDAY-1734277582424-x8mxlkv4z",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "THURSDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "27": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-THURSDAY-1734278133051-vpr3j0z02",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "THURSDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "28": {
+    "id": "716c9f64-8819-4b2d-9411-404bbe70d058-THURSDAY-1734278040943-p4ktfvh1p",
+    "therapistId": "716c9f64-8819-4b2d-9411-404bbe70d058",
+    "dayOfWeek": "THURSDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Jelena Nikolić",
+    "therapistEmail": "jelena@example.com",
+    "specialties": [
+      "Hair Styling",
+      "Hair Coloring"
+    ]
+  },
+  "29": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-THURSDAY",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "THURSDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "30": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-TUESDAY-1734277705588-45cg1tid6",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "TUESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "31": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-TUESDAY-1734277582424-vk7wbicw9",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "TUESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "32": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-TUESDAY-1734277875473-5947ssw0w",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "TUESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "33": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-TUESDAY-1734277539998-xmscacktw",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "TUESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "34": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-TUESDAY-1734278040942-7omvckujz",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "TUESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "35": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-TUESDAY-1734277354106",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "TUESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "36": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-TUESDAY",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "TUESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "37": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-TUESDAY-1734277350358",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "TUESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "38": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-TUESDAY-1734278133051-ts5xwcjiv",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "TUESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "39": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-WEDNESDAY-1734277350358",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "WEDNESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "40": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-WEDNESDAY",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "WEDNESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "41": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-WEDNESDAY-1734277582424-7z3ewllbk",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "WEDNESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "42": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-WEDNESDAY-1734277705588-h2sqh05xc",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "WEDNESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "43": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-WEDNESDAY-1734277354106",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "WEDNESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "44": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-WEDNESDAY-1734278133051-sb6vttmaw",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "WEDNESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "45": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-WEDNESDAY-1734278040943-g7lzngmep",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "WEDNESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "46": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-WEDNESDAY-1734277539998-4739sjgi2",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "WEDNESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "47": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-WEDNESDAY-1734277875473-112oan4ea",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "WEDNESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  }
+}
+2024-12-15T22:31:25.204Z [info] : [DEBUG] GET /api/schedule/working-hours 
+2024-12-15T22:31:25.204Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"3a07-MjaRaothzn6ix6H5Qng4Cu1xOoc\""
+}
+2024-12-15T22:31:25.206Z [debug] : Request body: 
+2024-12-15T22:31:25.206Z [info] : Authenticating request to: GET /working-hours 
+2024-12-15T22:31:25.206Z [debug] : Auth header: Present 
+2024-12-15T22:31:25.207Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:31:25.208Z [debug] : Fetching working hours for therapist: 
+2024-12-15T22:31:25.208Z [info] : [DEBUG] GET /api/therapists 
+2024-12-15T22:31:25.209Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"364-24gn7v65MHEe2qERattyY4r1pN4\""
+}
+2024-12-15T22:31:25.210Z [debug] : Request body: 
+2024-12-15T22:31:25.211Z [info] : [DEBUG] GET /api/clients 
+2024-12-15T22:31:25.211Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"2a6-BloH+0aNBRgp/iqiihh8FMMq/wM\""
+}
+2024-12-15T22:31:25.212Z [debug] : Request body: 
+2024-12-15T22:31:25.212Z [info] : Authenticating request to: GET / 
+2024-12-15T22:31:25.212Z [debug] : Auth header: Present 
+2024-12-15T22:31:25.213Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:31:25.214Z [info] : [DEBUG] GET /api/appointments/upcoming 
+2024-12-15T22:31:25.214Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"29a8-LxBLOcUZ4Jm+QmKe0qeF20BldGE\""
+}
+2024-12-15T22:31:25.215Z [debug] : Request body: 
+2024-12-15T22:31:25.215Z [info] : Authenticating request to: GET /upcoming 
+2024-12-15T22:31:25.216Z [debug] : Auth header: Present 
+2024-12-15T22:31:25.217Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:31:25.218Z [info] : [DEBUG] GET /api/dashboard/stats 
+2024-12-15T22:31:25.218Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "accept": "*/*",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"1a0-8MDO8tBp3K9Eb20szXZDe3vi/aA\""
+}
+2024-12-15T22:31:25.219Z [debug] : Request body: 
+2024-12-15T22:31:25.219Z [info] : Authenticating request to: GET /stats 
+2024-12-15T22:31:25.220Z [debug] : Auth header: Present 
+2024-12-15T22:31:25.221Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:31:25.223Z [debug] : Found working hours: 
+Metadata: {
+  "0": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-FRIDAY-1734277350358",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "FRIDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "1": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-FRIDAY",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "FRIDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "2": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-FRIDAY-1734278040943-c6cmo1zr4",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "FRIDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "3": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-FRIDAY-1734277354106",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "FRIDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "4": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-FRIDAY-1734277875473-hgmg4hfiq",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "FRIDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "5": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-FRIDAY-1734277539998-vm1nlbnmo",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "FRIDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "6": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-FRIDAY-1734277582424-1asm6aft1",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "FRIDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "7": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-FRIDAY-1734278133051-wcpz9not4",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "FRIDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "8": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-FRIDAY-1734277705588-d4zu5zum9",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "FRIDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "9": {
+    "id": "6de1eb7f-fbbc-484c-9e9f-fbe37b4bf31e-MONDAY-1734278133051-5ed9onef0",
+    "therapistId": "6de1eb7f-fbbc-484c-9e9f-fbe37b4bf31e",
+    "dayOfWeek": "MONDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Marija Jovanović",
+    "therapistEmail": "marija@example.com",
+    "specialties": [
+      "Manicure",
+      "Pedicure"
+    ]
+  },
+  "10": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-MONDAY",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "MONDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "11": {
+    "id": "716c9f64-8819-4b2d-9411-404bbe70d058-MONDAY-1734278040942-mcter7wsg",
+    "therapistId": "716c9f64-8819-4b2d-9411-404bbe70d058",
+    "dayOfWeek": "MONDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Jelena Nikolić",
+    "therapistEmail": "jelena@example.com",
+    "specialties": [
+      "Hair Styling",
+      "Hair Coloring"
+    ]
+  },
+  "12": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SATURDAY-1734277705588-39om4sepp",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SATURDAY",
+    "startTime": "00:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "13": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SATURDAY-1734277582424-x7gemzxim",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SATURDAY",
+    "startTime": "00:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "14": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SATURDAY",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SATURDAY",
+    "startTime": "00:00",
+    "endTime": "00:00",
+    "isWorkingDay": false,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "15": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SATURDAY-1734278040943-e9xsqni1r",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SATURDAY",
+    "startTime": "11:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "16": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SATURDAY-1734277350358",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SATURDAY",
+    "startTime": "00:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "17": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SATURDAY-1734277354106",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SATURDAY",
+    "startTime": "00:00",
+    "endTime": "00:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "18": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SATURDAY-1734277875473-pr3fveoew",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SATURDAY",
+    "startTime": "00:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "19": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SATURDAY-1734277539998-mwpt2zyt8",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SATURDAY",
+    "startTime": "00:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "20": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SATURDAY-1734278133051-cijguc8ku",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SATURDAY",
+    "startTime": "11:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "21": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SUNDAY-1734278133051-3hxdln2zc",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SUNDAY",
+    "startTime": "00:00",
+    "endTime": "00:00",
+    "isWorkingDay": false,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "22": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SUNDAY",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SUNDAY",
+    "startTime": "00:00",
+    "endTime": "00:00",
+    "isWorkingDay": false,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "23": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SUNDAY-1734277539998-wmq19bxk9",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SUNDAY",
+    "startTime": "00:00",
+    "endTime": "00:00",
+    "isWorkingDay": false,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "24": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SUNDAY-1734277705588-9e32sngih",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SUNDAY",
+    "startTime": "00:00",
+    "endTime": "00:00",
+    "isWorkingDay": false,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "25": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-SUNDAY-1734278040943-llcg79hza",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "SUNDAY",
+    "startTime": "00:00",
+    "endTime": "00:00",
+    "isWorkingDay": false,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "26": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-THURSDAY-1734277582424-x8mxlkv4z",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "THURSDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "27": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-THURSDAY-1734278133051-vpr3j0z02",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "THURSDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "28": {
+    "id": "716c9f64-8819-4b2d-9411-404bbe70d058-THURSDAY-1734278040943-p4ktfvh1p",
+    "therapistId": "716c9f64-8819-4b2d-9411-404bbe70d058",
+    "dayOfWeek": "THURSDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Jelena Nikolić",
+    "therapistEmail": "jelena@example.com",
+    "specialties": [
+      "Hair Styling",
+      "Hair Coloring"
+    ]
+  },
+  "29": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-THURSDAY",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "THURSDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "30": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-TUESDAY-1734277705588-45cg1tid6",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "TUESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "31": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-TUESDAY-1734277582424-vk7wbicw9",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "TUESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "32": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-TUESDAY-1734277875473-5947ssw0w",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "TUESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "33": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-TUESDAY-1734277539998-xmscacktw",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "TUESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "34": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-TUESDAY-1734278040942-7omvckujz",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "TUESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "35": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-TUESDAY-1734277354106",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "TUESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "36": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-TUESDAY",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "TUESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "37": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-TUESDAY-1734277350358",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "TUESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "38": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-TUESDAY-1734278133051-ts5xwcjiv",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "TUESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "39": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-WEDNESDAY-1734277350358",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "WEDNESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "40": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-WEDNESDAY",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "WEDNESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "41": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-WEDNESDAY-1734277582424-7z3ewllbk",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "WEDNESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "42": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-WEDNESDAY-1734277705588-h2sqh05xc",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "WEDNESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "43": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-WEDNESDAY-1734277354106",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "WEDNESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "44": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-WEDNESDAY-1734278133051-sb6vttmaw",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "WEDNESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "45": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-WEDNESDAY-1734278040943-g7lzngmep",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "WEDNESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "46": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-WEDNESDAY-1734277539998-4739sjgi2",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "WEDNESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  },
+  "47": {
+    "id": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4-WEDNESDAY-1734277875473-112oan4ea",
+    "therapistId": "64081a06-2f4f-403d-9a9e-d4d14ad6e7e4",
+    "dayOfWeek": "WEDNESDAY",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "isWorkingDay": true,
+    "therapistName": "Ana Petrović",
+    "therapistEmail": "ana@example.com",
+    "specialties": [
+      "Massage",
+      "Facial"
+    ]
+  }
+}
+2024-12-15T22:31:29.103Z [info] : [DEBUG] GET /api/dashboard/stats 
+2024-12-15T22:31:29.103Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "accept": "*/*",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"604-WU6uE+8qxikPYe9NsZdCweAPt00\""
+}
+2024-12-15T22:31:29.104Z [debug] : Request body: 
+2024-12-15T22:31:29.104Z [info] : Authenticating request to: GET /stats 
+2024-12-15T22:31:29.104Z [debug] : Auth header: Present 
+2024-12-15T22:31:29.105Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:32:25.313Z [info] : [DEBUG] GET /api/appointments/upcoming 
+2024-12-15T22:32:25.314Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"29a8-LxBLOcUZ4Jm+QmKe0qeF20BldGE\""
+}
+2024-12-15T22:32:25.315Z [debug] : Request body: 
+2024-12-15T22:32:25.316Z [info] : Authenticating request to: GET /upcoming 
+2024-12-15T22:32:25.316Z [debug] : Auth header: Present 
+2024-12-15T22:32:25.318Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:33:25.310Z [info] : [DEBUG] GET /api/appointments/upcoming 
+2024-12-15T22:33:25.310Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"29a8-LxBLOcUZ4Jm+QmKe0qeF20BldGE\""
+}
+2024-12-15T22:33:25.312Z [debug] : Request body: 
+2024-12-15T22:33:25.312Z [info] : Authenticating request to: GET /upcoming 
+2024-12-15T22:33:25.312Z [debug] : Auth header: Present 
+2024-12-15T22:33:25.313Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:34:25.303Z [info] : [DEBUG] GET /api/appointments/upcoming 
+2024-12-15T22:34:25.304Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"29a8-LxBLOcUZ4Jm+QmKe0qeF20BldGE\""
+}
+2024-12-15T22:34:25.305Z [debug] : Request body: 
+2024-12-15T22:34:25.305Z [info] : Authenticating request to: GET /upcoming 
+2024-12-15T22:34:25.306Z [debug] : Auth header: Present 
+2024-12-15T22:34:25.306Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:35:25.310Z [info] : [DEBUG] GET /api/appointments/upcoming 
+2024-12-15T22:35:25.310Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"29a8-LxBLOcUZ4Jm+QmKe0qeF20BldGE\""
+}
+2024-12-15T22:35:25.312Z [debug] : Request body: 
+2024-12-15T22:35:25.312Z [info] : Authenticating request to: GET /upcoming 
+2024-12-15T22:35:25.313Z [debug] : Auth header: Present 
+2024-12-15T22:35:25.314Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:36:52.304Z [info] : [DEBUG] GET /api/appointments/upcoming 
+2024-12-15T22:36:52.305Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"29a8-LxBLOcUZ4Jm+QmKe0qeF20BldGE\""
+}
+2024-12-15T22:36:52.307Z [debug] : Request body: 
+2024-12-15T22:36:52.307Z [info] : Authenticating request to: GET /upcoming 
+2024-12-15T22:36:52.307Z [debug] : Auth header: Present 
+2024-12-15T22:36:52.308Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:37:53.316Z [info] : [DEBUG] GET /api/appointments/upcoming 
+2024-12-15T22:37:53.316Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"29a8-LxBLOcUZ4Jm+QmKe0qeF20BldGE\""
+}
+2024-12-15T22:37:53.318Z [debug] : Request body: 
+2024-12-15T22:37:53.318Z [info] : Authenticating request to: GET /upcoming 
+2024-12-15T22:37:53.318Z [debug] : Auth header: Present 
+2024-12-15T22:37:53.319Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:38:54.318Z [info] : [DEBUG] GET /api/appointments/upcoming 
+2024-12-15T22:38:54.319Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"29a8-LxBLOcUZ4Jm+QmKe0qeF20BldGE\""
+}
+2024-12-15T22:38:54.320Z [debug] : Request body: 
+2024-12-15T22:38:54.320Z [info] : Authenticating request to: GET /upcoming 
+2024-12-15T22:38:54.320Z [debug] : Auth header: Present 
+2024-12-15T22:38:54.321Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:39:55.311Z [info] : [DEBUG] GET /api/appointments/upcoming 
+2024-12-15T22:39:55.312Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"29a8-LxBLOcUZ4Jm+QmKe0qeF20BldGE\""
+}
+2024-12-15T22:39:55.313Z [debug] : Request body: 
+2024-12-15T22:39:55.313Z [info] : Authenticating request to: GET /upcoming 
+2024-12-15T22:39:55.314Z [debug] : Auth header: Present 
+2024-12-15T22:39:55.315Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:40:56.314Z [info] : [DEBUG] GET /api/appointments/upcoming 
+2024-12-15T22:40:56.314Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"29a8-LxBLOcUZ4Jm+QmKe0qeF20BldGE\""
+}
+2024-12-15T22:40:56.315Z [debug] : Request body: 
+2024-12-15T22:40:56.315Z [info] : Authenticating request to: GET /upcoming 
+2024-12-15T22:40:56.316Z [debug] : Auth header: Present 
+2024-12-15T22:40:56.316Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:41:57.316Z [info] : [DEBUG] GET /api/appointments/upcoming 
+2024-12-15T22:41:57.316Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"29a8-LxBLOcUZ4Jm+QmKe0qeF20BldGE\""
+}
+2024-12-15T22:41:57.317Z [debug] : Request body: 
+2024-12-15T22:41:57.317Z [info] : Authenticating request to: GET /upcoming 
+2024-12-15T22:41:57.318Z [debug] : Auth header: Present 
+2024-12-15T22:41:57.319Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:42:58.304Z [info] : [DEBUG] GET /api/appointments/upcoming 
+2024-12-15T22:42:58.304Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"29a8-LxBLOcUZ4Jm+QmKe0qeF20BldGE\""
+}
+2024-12-15T22:42:58.305Z [debug] : Request body: 
+2024-12-15T22:42:58.306Z [info] : Authenticating request to: GET /upcoming 
+2024-12-15T22:42:58.306Z [debug] : Auth header: Present 
+2024-12-15T22:42:58.307Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:43:59.314Z [info] : [DEBUG] GET /api/appointments/upcoming 
+2024-12-15T22:43:59.315Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"29a8-LxBLOcUZ4Jm+QmKe0qeF20BldGE\""
+}
+2024-12-15T22:43:59.316Z [debug] : Request body: 
+2024-12-15T22:43:59.316Z [info] : Authenticating request to: GET /upcoming 
+2024-12-15T22:43:59.316Z [debug] : Auth header: Present 
+2024-12-15T22:43:59.317Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 
+2024-12-15T22:45:00.302Z [info] : [DEBUG] GET /api/appointments/upcoming 
+2024-12-15T22:45:00.302Z [debug] : Request headers: 
+Metadata: {
+  "host": "localhost:3000",
+  "connection": "keep-alive",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMWFkZDhiYS01OGI3LTRjOWYtYjY1Mi1jM2FmZmYwNmYyOTciLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwicm9sZSI6IkFETUlOIiwic2Fsb25JZCI6ImRlZmF1bHQtc2Fsb24iLCJpYXQiOjE3MzQyODk0MDgsImV4cCI6MTczNDM3NTgwOH0.11dHTJDeEfDzjyJoa4IX0y5fhm4CxUBJ9V3-k5RGwks",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "accept": "application/json, text/plain, */*",
+  "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "origin": "http://localhost:5173",
+  "sec-fetch-site": "same-site",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-dest": "empty",
+  "referer": "http://localhost:5173/",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,sr-RS;q=0.7,sr;q=0.6,hr;q=0.5,bs;q=0.4,de;q=0.3",
+  "if-none-match": "W/\"29a8-LxBLOcUZ4Jm+QmKe0qeF20BldGE\""
+}
+2024-12-15T22:45:00.304Z [debug] : Request body: 
+2024-12-15T22:45:00.304Z [info] : Authenticating request to: GET /upcoming 
+2024-12-15T22:45:00.304Z [debug] : Auth header: Present 
+2024-12-15T22:45:00.305Z [debug] : Token decoded successfully. User ID: c1add8ba-58b7-4c9f-b652-c3afff06f297, Role: ADMIN, Email: admin@mail.com 

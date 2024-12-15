@@ -5,12 +5,16 @@
       "src": "client/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "build"
+        "distDir": "dist",
+        "buildCommand": "cd client && npm install && npm run build"
       }
     },
     {
       "src": "server/src/index.ts",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "buildCommand": "cd server && npm install && npx prisma generate && npm run build"
+      }
     }
   ],
   "routes": [
@@ -20,7 +24,15 @@
     },
     {
       "src": "/(.*)",
-      "dest": "client/$1"
+      "dest": "client/dist/$1",
+      "continue": true
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "client/dist/index.html"
     }
   ]
 }
