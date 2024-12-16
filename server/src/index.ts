@@ -45,6 +45,18 @@ app.get('/api/test', (req, res) => {
   res.json({ message: 'Server is running correctly' });
 });
 
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'Salon Management System API',
+    status: 'running',
+    endpoints: {
+      api: '/api',
+      docs: '/api/docs'
+    }
+  });
+});
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/appointments', appointmentRoutes);
