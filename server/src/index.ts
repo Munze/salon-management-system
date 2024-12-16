@@ -59,6 +59,15 @@ app.use('/api/users', userRoutes);
 // Error handling middleware
 app.use(errorHandler);
 
+// Catch-all route for 404s
+app.use('*', (req, res) => {
+  logger.info(`404 - Not Found: ${req.originalUrl}`);
+  res.status(404).json({ 
+    message: 'Not Found',
+    requestedPath: req.originalUrl 
+  });
+});
+
 // Initialize database and start server
 async function startServer() {
   try {
