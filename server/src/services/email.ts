@@ -46,40 +46,33 @@ export const sendEmail = async ({ to, subject, text, html }: EmailOptions): Prom
 
 export const sendAppointmentConfirmation = async (
   clientEmail: string,
-  appointmentDetails: {
-    clientName: string;
-    therapistName: string;
-    serviceName: string;
-    startTime: Date | string;
-    endTime: Date | string;
-  }
-) => {
-  const { clientName, therapistName, serviceName } = appointmentDetails;
-  const startTime = new Date(appointmentDetails.startTime);
-  const endTime = new Date(appointmentDetails.endTime);
-  
-  const subject = 'Potvrda termina - Salon Management System';
-  const html = `
-    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-      <h2>Potvrda termina</h2>
-      <p>Poštovani/a ${clientName},</p>
-      <p>Vaš termin je potvrđen sa sledećim detaljima:</p>
-      <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0;">
-        <p><strong>Usluga:</strong> ${serviceName}</p>
-        <p><strong>Terapeut:</strong> ${therapistName}</p>
-        <p><strong>Datum:</strong> ${startTime.toLocaleDateString('sr-RS')}</p>
-        <p><strong>Vreme:</strong> ${startTime.toLocaleTimeString('sr-RS', { hour: '2-digit', minute: '2-digit' })} - ${endTime.toLocaleTimeString('sr-RS', { hour: '2-digit', minute: '2-digit' })}</p>
-      </div>
-      <p>Ako je potrebno da promenite ili otkažete termin, molimo vas da nas obavestite najmanje 24 sata unapred.</p>
-      <p>Radujemo se vašoj poseti!</p>
-      <p>Srdačan pozdrav,<br>Salon Management Tim</p>
-    </div>
-  `;
+  clientName: string,
+  startTime: Date | string,
+  serviceName: string,
+  therapistName: string
+): Promise<boolean> => {
+  const appointmentDate = new Date(startTime).toLocaleDateString('sr-RS');
+  const appointmentTime = new Date(startTime).toLocaleTimeString('sr-RS', { hour: '2-digit', minute: '2-digit' });
 
   return sendEmail({
     to: clientEmail,
-    subject,
-    html,
+    subject: 'Potvrda termina - Salon Management System',
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2>Potvrda termina</h2>
+        <p>Poštovani/a ${clientName},</p>
+        <p>Vaš termin je potvrđen sa sledećim detaljima:</p>
+        <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0;">
+          <p><strong>Usluga:</strong> ${serviceName}</p>
+          <p><strong>Terapeut:</strong> ${therapistName}</p>
+          <p><strong>Datum:</strong> ${appointmentDate}</p>
+          <p><strong>Vreme:</strong> ${appointmentTime}</p>
+        </div>
+        <p>Ako je potrebno da promenite ili otkažete termin, molimo vas da nas obavestite najmanje 24 sata unapred.</p>
+        <p>Radujemo se vašoj poseti!</p>
+        <p>Srdačan pozdrav,<br>Salon Management Tim</p>
+      </div>
+    `
   });
 };
 

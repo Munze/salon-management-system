@@ -29,7 +29,7 @@ const navigation = [
     icon: ChartBarIcon,
     children: [
       { name: 'Dashboard', href: '/analytics' },
-      { name: 'Po usluzi', href: '/analytics/by-service', adminOnly: true },
+      { name: 'Po usluzi', href: '/analytics/services', adminOnly: true },
       { name: 'Po terapeutu', href: '/analytics/by-therapist', adminOnly: true },
     ],
   },

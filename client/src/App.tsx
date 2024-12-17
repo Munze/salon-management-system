@@ -23,6 +23,8 @@ import theme from './theme';
 import PrivateRoute from './components/auth/PrivateRoute';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ServiceAnalytics from './pages/ServiceAnalytics';
+import TherapistAnalytics from './pages/TherapistAnalytics';
 
 function App() {
   return (
@@ -49,8 +51,8 @@ function App() {
           <Route path="services" element={<Services />} />
           <Route path="analytics">
             <Route index element={<Analytics />} />
-            <Route path="by-service" element={<AnalyticsByService />} />
-            <Route path="by-therapist" element={<AnalyticsByTherapist />} />
+            <Route path="services" element={<ServiceAnalytics />} />
+            <Route path="by-therapist" element={<TherapistAnalytics />} />
           </Route>
           <Route path="schedule-settings" element={<ScheduleSettings />} />
           <Route path="user-management" element={<UserManagement />} />

@@ -204,24 +204,47 @@ export const checkAvailability = async (req: Request, res: Response) => {
     logger.info(`Checking working hours for ${dayOfWeek} (${startDate.toISOString()})`);
     
     try {
-      const workingHours = await prisma.workingHours.findFirst({
+      const scheduleSettings = await prisma.scheduleSettings.findFirst({
         where: {
           dayOfWeek,
           therapistId: therapistId as string,
         },
       });
 
-      if (!workingHours || !workingHours.isWorkingDay) {
-        logger.info(`No working hours found for ${dayOfWeek} or not a working day`);
+      if (!scheduleSettings || !scheduleSettings.isWorkingDay) {
+        logger.info(`No schedule settings found for ${dayOfWeek} or not a working day`);
         return res.json({ 
           available: false,
           reason: 'outside_working_hours'
         });
       }
 
+      // Check if there's a schedule exception for this date
+      const scheduleException = await prisma.scheduleException.findFirst({
+        where: {
+          therapistId: therapistId as string,
+          date: {
+            equals: startOfDay(startDate)
+          }
+        }
+      });
+
+      // If there's an exception and it's not a working day, the therapist is unavailable
+      if (scheduleException && !scheduleException.isWorkingDay) {
+        logger.info(`Schedule exception found for ${startDate.toISOString()}: Not a working day`);
+        return res.json({
+          available: false,
+          reason: 'schedule_exception'
+        });
+      }
+
+      // Use exception times if available, otherwise use regular schedule
+      const workingStartTime = scheduleException?.startTime || scheduleSettings.startTime;
+      const workingEndTime = scheduleException?.endTime || scheduleSettings.endTime;
+      
       // Parse working hours
-      const [workStartHours, workStartMinutes] = workingHours.startTime.split(':').map(Number);
-      const [workEndHours, workEndMinutes] = workingHours.endTime.split(':').map(Number);
+      const [workStartHours, workStartMinutes] = workingStartTime.split(':').map(Number);
+      const [workEndHours, workEndMinutes] = workingEndTime.split(':').map(Number);
 
       // Create appointment times in UTC
       const appointmentStart = new Date(startTime as string);

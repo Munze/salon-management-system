@@ -8,6 +8,15 @@ import { UserRole, Status } from '@prisma/client';
 export const getAllTherapists = async (req: Request, res: Response) => {
   try {
     const therapists = await prisma.therapist.findMany({
+      include: {
+        user: {
+          select: {
+            email: true,
+            name: true,
+            phone: true
+          }
+        }
+      },
       orderBy: { name: 'asc' }
     });
     res.json(therapists);
@@ -21,43 +30,51 @@ export const createTherapist = async (req: Request, res: Response) => {
   const { name, email, phone, specialties } = req.body;
 
   try {
-    // Start a transaction to create both therapist and user
-    const result = await prisma.$transaction(async (prisma) => {
-      // Create therapist
-      const therapist = await prisma.therapist.create({
-        data: {
-          name,
-          email,
-          phone,
-          specialties,
-        },
-      });
+    // Generate password for the user
+    const password = generateSerbianPassword();
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-      // Generate password for the user
-      const password = generateSerbianPassword();
-      const hashedPassword = await bcrypt.hash(password, 10);
-
-      // Create corresponding user account
-      const user = await prisma.user.create({
-        data: {
-          name,
-          email,
-          phone,
-          password: hashedPassword,
-          role: UserRole.THERAPIST,
-        },
-      });
-
-      return { therapist, user, password };
+    // Create user first
+    const user = await prisma.user.create({
+      data: {
+        email,
+        password: hashedPassword,
+        name,
+        phone,
+        role: UserRole.THERAPIST,
+      },
     });
 
-    // Log the generated password (in production, this should be sent via email)
-    logger.info(`Generated password for therapist ${name}: ${result.password}`);
+    // Then create therapist with user relation
+    const therapist = await prisma.therapist.create({
+      data: {
+        name,
+        email,
+        phone,
+        specialties,
+        user: {
+          connect: {
+            id: user.id
+          }
+        }
+      },
+      include: {
+        user: {
+          select: {
+            email: true,
+            name: true,
+            phone: true
+          }
+        }
+      }
+    });
 
+    // Return the created therapist with the temporary password
     res.status(201).json({
-      ...result.therapist,
-      generatedPassword: result.password // Include the password in the response
+      therapist,
+      temporaryPassword: password
     });
+
   } catch (error) {
     logger.error('Error creating therapist:', error);
     res.status(500).json({ message: 'Failed to create therapist' });

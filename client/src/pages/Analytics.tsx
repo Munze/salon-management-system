@@ -13,6 +13,8 @@ import {
   Menu,
   MenuItem,
   Fade,
+  CardActionArea,
+  Link
 } from '@mui/material';
 import {
   BarChart,
@@ -38,6 +40,7 @@ import { TimeframeSelector } from '../components/TimeframeSelector';
 import { analyticsService, type AnalyticsData, type AnalyticsFilter } from '../services/analyticsService';
 import { StatCard } from '../components/StatCard';
 import { startOfMonth, endOfMonth } from 'date-fns';
+import { Link as RouterLink } from 'react-router-dom';
 
 const COLORS = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEEAD', '#D4A5A5'];
 
@@ -137,6 +140,37 @@ export default function Analytics() {
   return (
     <Box sx={{ p: 3, fontFamily: theme.fontFamily }}>
       <Grid container spacing={3}>
+        <Grid item xs={12} md={6}>
+          <Card>
+            <CardActionArea component={RouterLink} to="/analytics/by-service">
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  Po usluzi
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Pregled analitike po uslugama
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Card>
+            <CardActionArea component={RouterLink} to="/analytics/by-therapist">
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  Po terapeutu
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Pregled analitike po terapeutima
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Grid>
+      </Grid>
+
+      <Grid container spacing={3}>
         <Grid item xs={12}>
           <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
             <Typography variant="h4" component="h1" sx={{ fontFamily: theme.fontFamily }}>
@@ -182,18 +216,25 @@ export default function Analytics() {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis 
                   dataKey="date" 
-                  tickFormatter={(date) => {
-                    const daysDiff = differenceInDays(
-                      parseISO(timeframe[1].toISOString()),
-                      parseISO(timeframe[0].toISOString())
-                    );
-                    
-                    if (daysDiff <= 30) {
-                      return format(parseISO(date), 'dd.MM');
-                    } else if (daysDiff <= 90) {
-                      return `W${getWeek(parseISO(date))}`;
-                    } else {
-                      return format(parseISO(date), 'MMM');
+                  tickFormatter={(value) => {
+                    if (!value) return '';
+                    try {
+                      const date = new Date(value);
+                      if (isNaN(date.getTime())) return '';
+                      const daysDiff = differenceInDays(
+                        new Date(timeframe[1].toISOString()),
+                        new Date(timeframe[0].toISOString())
+                      );
+                      
+                      if (daysDiff <= 30) {
+                        return format(date, 'dd.MM.');
+                      } else if (daysDiff <= 90) {
+                        return format(date, 'dd.MM.');
+                      } else {
+                        return format(date, 'MMM yyyy');
+                      }
+                    } catch (error) {
+                      return '';
                     }
                   }}
                   tick={{ fontSize: theme.fontSize, fontFamily: theme.fontFamily }}

@@ -6,6 +6,7 @@ import prisma from '../prisma';
 import { logger } from '../utils/logger';
 import { sendEmail } from '../services/email';
 import crypto from 'crypto';
+import { Prisma } from '@prisma/client';
 
 export const login = async (req: Request, res: Response) => {
   try {

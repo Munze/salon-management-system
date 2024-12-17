@@ -1,6 +1,22 @@
 import { Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
-import { startOfDay, endOfDay, parseISO, format, differenceInDays, addDays, isBefore, isSameDay, addWeeks, startOfMonth, addMonths, isSameMonth, isWithinInterval } from 'date-fns';
+import { PrismaClient, Status } from '@prisma/client';
+import { 
+  startOfMonth, 
+  endOfMonth, 
+  startOfDay,
+  endOfDay,
+  isSameDay,
+  isSameMonth,
+  differenceInDays,
+  addDays,
+  addMonths,
+  parseISO,
+  format,
+  addWeeks,
+  startOfWeek,
+  isBefore,
+  isWithinInterval
+} from 'date-fns';
 
 const prisma = new PrismaClient();
 
@@ -8,6 +24,51 @@ interface AnalyticsFilter {
   type?: 'therapist' | 'service';
   value?: string;
 }
+
+// Helper function to group appointments by time period
+const groupAppointmentsByPeriod = (appointments: any[], startDate: Date, endDate: Date): { month: string; revenue: number }[] => {
+  const trends: { month: string; revenue: number }[] = [];
+  const daysDiff = differenceInDays(endDate, startDate);
+
+  // For shorter periods (up to 90 days), group by day
+  if (daysDiff <= 90) {
+    let currentDate = startOfDay(startDate);
+    while (currentDate <= endDate) {
+      const dayAppointments = appointments.filter(app => 
+        isSameDay(new Date(app.startTime), currentDate)
+      );
+      
+      const dayRevenue = dayAppointments.reduce((sum, app) => sum + app.price, 0);
+      
+      trends.push({
+        month: currentDate.toISOString(),
+        revenue: dayRevenue
+      });
+      
+      currentDate = addDays(currentDate, 1);
+    }
+  }
+  // For longer periods, group by month
+  else {
+    let currentDate = startOfMonth(startDate);
+    while (currentDate <= endDate) {
+      const monthAppointments = appointments.filter(app => 
+        isSameMonth(new Date(app.startTime), currentDate)
+      );
+      
+      const monthRevenue = monthAppointments.reduce((sum, app) => sum + app.price, 0);
+      
+      trends.push({
+        month: currentDate.toISOString(),
+        revenue: monthRevenue
+      });
+      
+      currentDate = addMonths(currentDate, 1);
+    }
+  }
+  
+  return trends;
+};
 
 export const getAnalytics = async (req: Request, res: Response) => {
   try {
@@ -40,7 +101,16 @@ export const getAnalytics = async (req: Request, res: Response) => {
       
       try {
         const therapist = await prisma.therapist.findUnique({
-          where: { email: user.email }
+          where: { email: user.email },
+          include: {
+            appointments: {
+              include: {
+                service: true,
+                client: true,
+                therapist: true
+              }
+            }
+          }
         });
         
         console.log('Found therapist:', therapist);
@@ -75,8 +145,10 @@ export const getAnalytics = async (req: Request, res: Response) => {
           gte: start,
           lte: end,
         },
-        status: {
-          notIn: ['CANCELLED', 'NO_SHOW']
+        NOT: {
+          status: {
+            in: ['CANCELLED', 'NO_SHOW'] as Status[]
+          }
         },
         ...(filter.type === 'therapist' && filter.value && {
           therapistId: filter.value
@@ -139,8 +211,10 @@ export const getAnalytics = async (req: Request, res: Response) => {
           gte: start,
           lte: end,
         },
-        status: {
-          notIn: ['CANCELLED', 'NO_SHOW']
+        NOT: {
+          status: {
+            in: ['CANCELLED', 'NO_SHOW'] as Status[]
+          }
         }
       },
       _sum: {
@@ -157,8 +231,10 @@ export const getAnalytics = async (req: Request, res: Response) => {
               gte: start,
               lte: end,
             },
-            status: {
-              notIn: ['CANCELLED', 'NO_SHOW']
+            NOT: {
+              status: {
+                in: ['CANCELLED', 'NO_SHOW'] as Status[]
+              }
             }
           }
         }
@@ -170,12 +246,16 @@ export const getAnalytics = async (req: Request, res: Response) => {
               gte: start,
               lte: end,
             },
-            status: {
-              notIn: ['CANCELLED', 'NO_SHOW']
+            NOT: {
+              status: {
+                in: ['CANCELLED', 'NO_SHOW'] as Status[]
+              }
             }
           },
           include: {
-            service: true
+            service: true,
+            client: true,
+            therapist: true
           }
         }
       }
@@ -268,56 +348,8 @@ export const getAnalytics = async (req: Request, res: Response) => {
       };
     }).filter(service => service.revenue > 0);
 
-    // Helper function to generate all dates in range
-    const generateDatePoints = (start: Date, end: Date): string[] => {
-      const dates: string[] = [];
-      const daysDiff = differenceInDays(end, start);
-      
-      if (daysDiff <= 30) {
-        // Daily points for up to 30 days
-        for (let i = 0; i <= daysDiff; i++) {
-          dates.push(format(addDays(start, i), 'yyyy-MM-dd'));
-        }
-      } else if (daysDiff <= 90) {
-        // Weekly points for 30-90 days
-        let current = start;
-        while (isBefore(current, end) || isSameDay(current, end)) {
-          dates.push(format(current, 'yyyy-MM-dd'));
-          current = addWeeks(current, 1);
-        }
-      } else {
-        // Monthly points for > 90 days
-        let current = startOfMonth(start);
-        while (isBefore(current, end)) {
-          dates.push(format(current, 'yyyy-MM-dd'));
-          current = addMonths(current, 1);
-        }
-        // Add the last month if not already included
-        if (isSameMonth(current, end)) {
-          dates.push(format(current, 'yyyy-MM-dd'));
-        }
-      }
-      return dates;
-    };
-
     // Calculate revenue trend with all data points
-    const datePoints = generateDatePoints(start, end);
-    const revenueTrend = datePoints.map(date => {
-      const dayStart = startOfDay(parseISO(date));
-      const dayEnd = endOfDay(parseISO(date));
-      
-      const dayAppointments = appointments.filter(apt => 
-        isWithinInterval(apt.startTime, { start: dayStart, end: dayEnd }) &&
-        apt.status !== 'CANCELLED' && 
-        apt.status !== 'NO_SHOW'
-      );
-
-      return {
-        date,
-        revenue: dayAppointments.reduce((sum, apt) => sum + (apt.price || 0), 0),
-        appointments: dayAppointments.length
-      };
-    });
+    const revenueTrend = groupAppointmentsByPeriod(appointments, start, end);
 
     console.log('Formatted revenue data:', {
       revenueByTherapist: formattedRevenueByTherapist,
@@ -337,8 +369,10 @@ export const getAnalytics = async (req: Request, res: Response) => {
             gte: previousStart,
             lte: previousEnd,
           },
-          status: {
-            notIn: ['CANCELLED', 'NO_SHOW']
+          NOT: {
+            status: {
+              in: ['CANCELLED', 'NO_SHOW'] as Status[]
+            }
           }
         },
         _sum: {
@@ -388,5 +422,216 @@ export const getAnalytics = async (req: Request, res: Response) => {
   } catch (error) {
     console.error('Analytics error:', error);
     res.status(500).json({ error: 'Failed to fetch analytics data' });
+  }
+};
+
+export const getServiceAnalytics = async (req: Request, res: Response) => {
+  try {
+    const { startDate, endDate } = req.query;
+    const user = req.user as any;
+
+    if (!user || !user.email) {
+      return res.status(401).json({ message: 'User not authenticated' });
+    }
+
+    const start = startOfDay(parseISO(startDate as string));
+    const end = endOfDay(parseISO(endDate as string));
+
+    // Get all services
+    const services = await prisma.service.findMany({
+      where: {
+        isActive: true
+      },
+      select: {
+        id: true,
+        name: true,
+        price: true,
+        duration: true,
+        appointments: {
+          where: {
+            startTime: {
+              gte: start,
+              lte: end,
+            },
+            NOT: {
+              status: {
+                in: ['CANCELLED', 'NO_SHOW'] as Status[]
+              }
+            }
+          },
+          include: {
+            client: true,
+            therapist: true,
+            service: true
+          }
+        }
+      }
+    });
+
+    // Calculate metrics for each service
+    const serviceAnalytics = services.map(service => {
+      const totalAppointments = service.appointments.length;
+      const totalRevenue = service.appointments.reduce((sum, apt) => sum + (apt.price || service.price), 0);
+      const uniqueClients = new Set(service.appointments.map(apt => apt.client.id)).size;
+      const uniqueTherapists = new Set(service.appointments.map(apt => apt.therapist.id)).size;
+      
+      // Calculate average duration and price
+      const avgPrice = totalAppointments > 0 ? totalRevenue / totalAppointments : service.price;
+
+      // Group appointments by time period
+      const monthlyData = groupAppointmentsByPeriod(service.appointments, start, end);
+
+      return {
+        id: service.id,
+        name: service.name,
+        metrics: {
+          totalAppointments,
+          totalRevenue,
+          uniqueClients,
+          uniqueTherapists,
+          avgPrice,
+          standardPrice: service.price,
+          standardDuration: service.duration
+        },
+        monthlyTrends: monthlyData
+      };
+    });
+
+    // Sort services by total revenue
+    serviceAnalytics.sort((a, b) => b.metrics.totalRevenue - a.metrics.totalRevenue);
+
+    // Calculate overall statistics
+    const overallStats = {
+      totalRevenue: serviceAnalytics.reduce((sum, service) => sum + service.metrics.totalRevenue, 0),
+      totalAppointments: serviceAnalytics.reduce((sum, service) => sum + service.metrics.totalAppointments, 0),
+      uniqueClients: new Set(services.flatMap(s => s.appointments.map(a => a.client.id))).size,
+      averageRevenuePerService: serviceAnalytics.reduce((sum, service) => sum + service.metrics.totalRevenue, 0) / serviceAnalytics.length,
+      topPerformingServices: serviceAnalytics.slice(0, 5).map(s => ({
+        name: s.name,
+        revenue: s.metrics.totalRevenue,
+        appointments: s.metrics.totalAppointments
+      }))
+    };
+
+    res.json({
+      services: serviceAnalytics,
+      overallStats,
+      dateRange: {
+        start,
+        end
+      }
+    });
+  } catch (error) {
+    console.error('Error in getServiceAnalytics:', error);
+    res.status(500).json({ message: 'Failed to fetch service analytics', details: error.message });
+  }
+};
+
+export const getTherapistAnalytics = async (req: Request, res: Response) => {
+  try {
+    const { startDate, endDate } = req.query;
+    const start = new Date(startDate as string);
+    const end = new Date(endDate as string);
+
+    // Get all appointments within the date range with their services and therapists
+    const appointments = await prisma.appointment.findMany({
+      where: {
+        startTime: {
+          gte: start,
+          lte: end,
+        },
+        NOT: {
+          status: {
+            in: ['CANCELLED', 'NO_SHOW'] as Status[]
+          }
+        }
+      },
+      include: {
+        service: true,
+        therapist: true,
+        client: true,
+      },
+    });
+
+    // Get all therapists
+    const therapists = await prisma.therapist.findMany({
+      include: {
+        appointments: {
+          where: {
+            startTime: {
+              gte: start,
+              lte: end,
+            },
+            NOT: {
+              status: {
+                in: ['CANCELLED', 'NO_SHOW'] as Status[]
+              }
+            }
+          },
+          include: {
+            service: true,
+            client: true,
+            therapist: true
+          }
+        }
+      }
+    });
+
+    // Calculate metrics for each therapist
+    const therapistMetrics = therapists.map(therapist => {
+      const therapistAppointments = therapist.appointments;
+      
+      // Calculate total revenue
+      const totalRevenue = therapistAppointments.reduce((sum, app) => {
+        return sum + app.price;
+      }, 0);
+
+      // Calculate unique clients
+      const uniqueClients = new Set(therapistAppointments.map(app => app.clientId)).size;
+
+      // Calculate monthly trends
+      const monthlyTrends = groupAppointmentsByPeriod(therapistAppointments, start, end);
+
+      // Calculate occupancy rate (assuming 8-hour workday)
+      const workingDays = differenceInDays(end, start) + 1;
+      const totalAvailableHours = workingDays * 8;
+      const totalBookedHours = therapistAppointments.reduce((sum, app) => {
+        return sum + (app.service.duration / 60);
+      }, 0);
+      const occupancyRate = totalBookedHours / totalAvailableHours;
+
+      return {
+        id: therapist.id,
+        name: therapist.name,
+        metrics: {
+          totalRevenue,
+          totalAppointments: therapistAppointments.length,
+          uniqueClients,
+          averageRevenuePerAppointment: therapistAppointments.length > 0 
+            ? totalRevenue / therapistAppointments.length 
+            : 0,
+          occupancyRate,
+        },
+        monthlyTrends,
+      };
+    });
+
+    // Calculate overall statistics
+    const overallStats = {
+      totalRevenue: therapistMetrics.reduce((sum, t) => sum + t.metrics.totalRevenue, 0),
+      totalAppointments: therapistMetrics.reduce((sum, t) => sum + t.metrics.totalAppointments, 0),
+      uniqueClients: new Set(appointments.map(app => app.clientId)).size,
+      averageRevenuePerTherapist: therapistMetrics.length > 0 
+        ? therapistMetrics.reduce((sum, t) => sum + t.metrics.totalRevenue, 0) / therapistMetrics.length 
+        : 0,
+    };
+
+    res.json({
+      therapists: therapistMetrics,
+      overallStats,
+    });
+  } catch (error) {
+    console.error('Error fetching therapist analytics:', error);
+    res.status(500).json({ error: 'Failed to fetch therapist analytics data' });
   }
 };

@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
-import { prisma } from '../config/database';
+import prisma from '../prisma';
 import { logger } from '../utils/logger';
-import { DayOfWeek } from '@prisma/client';
+
+type DayOfWeek = 'SUNDAY' | 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY' | 'SATURDAY';
 
 // Working Hours
 export const getWorkingHours = async (req: Request, res: Response) => {

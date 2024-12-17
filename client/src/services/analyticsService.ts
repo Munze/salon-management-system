@@ -170,6 +170,38 @@ export const analyticsService = {
   }
 };
 
+export const fetchServiceAnalytics = async (startDate: Date, endDate: Date) => {
+  try {
+    const response = await api.get('/analytics/services', {
+      params: {
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+      },
+      headers: getAuthHeader(),
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching service analytics:', error);
+    throw error;
+  }
+};
+
+export const fetchTherapistAnalytics = async (startDate: Date, endDate: Date) => {
+  try {
+    const response = await api.get('/analytics/by-therapist', {
+      params: {
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+      },
+      headers: getAuthHeader(),
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching therapist analytics:', error);
+    throw error;
+  }
+};
+
 function getTimeframeStartDate(timeframe: string): string {
   const now = new Date();
   switch (timeframe) {

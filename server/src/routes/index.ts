@@ -7,6 +7,7 @@ import clientRoutes from './clients';
 import dashboardRoutes from './dashboard';
 import scheduleSettingsRoutes from './scheduleSettings';
 import userRoutes from './user';
+import analyticsRoutes from './analytics';
 import { logger } from '../utils/logger';
 
 const router = Router();
@@ -22,6 +23,7 @@ router.use('/clients', clientRoutes);
 router.use('/dashboard', dashboardRoutes);
 router.use('/schedule', scheduleSettingsRoutes);
 router.use('/users', userRoutes);
+router.use('/analytics', analyticsRoutes);
 
 // Log registered routes for debugging
 logger.info('API routes registered:');
