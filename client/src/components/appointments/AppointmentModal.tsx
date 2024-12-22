@@ -22,6 +22,7 @@ import { WorkingHours } from '../../types/schedule';
 import { Appointment, AppointmentStatus } from '../../types/appointment';
 import { isWithinWorkingHours } from '../../utils/dateUtils';
 import { CustomDateTimePicker } from '../common/CustomDateTimePicker';
+import scheduleService from '../../services/scheduleService'; // Assuming this is where scheduleService is imported
 
 interface AppointmentModalProps {
   open: boolean;
@@ -81,6 +82,39 @@ export function AppointmentModal({
       }));
     }
   }, [appointment, initialStartTime, initialEndTime]);
+
+  useEffect(() => {
+    if (formData.startTime && formData.endTime && formData.therapistId) {
+      scheduleService.checkAvailability(
+        formData.startTime.toISOString(),
+        formData.endTime.toISOString(),
+        formData.therapistId,
+        appointment?.id
+      ).then(response => {
+        if (!response.available) {
+          let errorMessage = 'Termin nije dostupan';
+          if (response.reason === 'overlap' && response.conflicts) {
+            const conflict = response.conflicts[0];
+            const startTime = new Date(conflict.start).toLocaleTimeString('sr-RS', { hour: '2-digit', minute: '2-digit' });
+            const endTime = new Date(conflict.end).toLocaleTimeString('sr-RS', { hour: '2-digit', minute: '2-digit' });
+            errorMessage = `Termin se preklapa sa postojećim terminom (${conflict.client} - ${conflict.service}, ${startTime}-${endTime})`;
+          }
+          setErrors(prev => ({
+            ...prev,
+            time: errorMessage
+          }));
+        } else {
+          // Clear time error if the slot is available
+          setErrors(prev => {
+            const { time, ...rest } = prev;
+            return rest;
+          });
+        }
+      }).catch(error => {
+        console.error('Error checking availability:', error);
+      });
+    }
+  }, [formData.startTime, formData.endTime, formData.therapistId, appointment?.id]);
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
