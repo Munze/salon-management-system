@@ -18,7 +18,10 @@ const therapistService = {
   getTherapists: async (): Promise<Therapist[]> => {
     const response = await axios.get(`${API_BASE_URL}/therapists`);
     return response.data.map((therapist: any) => ({
-      ...therapist,
+      id: therapist.id,
+      name: therapist.user.name,
+      email: therapist.user.email,
+      phone: therapist.user.phone,
       specialties: therapist.specialties || [],
       createdAt: therapist.createdAt ? new Date(therapist.createdAt) : undefined,
       updatedAt: therapist.updatedAt ? new Date(therapist.updatedAt) : undefined,

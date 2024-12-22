@@ -56,23 +56,31 @@ export default function Appointments() {
       ]);
 
       console.log('Received clients:', clientsData);
+      console.log('Received working hours:', workingHoursData);
+      
       setAppointments(appointmentsData);
       setClients(clientsData);
       setTherapists(therapistsData);
-      if (workingHoursData && workingHoursData.length > 0) {
-        // Ensure all required properties are present
-        const validWorkingHours = workingHoursData.map((hours: WorkingHours) => ({
-          id: hours.id || '',
-          dayOfWeek: hours.dayOfWeek || 'MONDAY',
-          startTime: hours.startTime || '09:00',
-          endTime: hours.endTime || '17:00',
-          isWorkingDay: hours.isWorkingDay ?? true,
+      
+      // Set working hours
+      if (Array.isArray(workingHoursData)) {
+        const validWorkingHours = workingHoursData.map(hours => ({
+          id: hours.id,
+          dayOfWeek: hours.dayOfWeek,
+          startTime: hours.startTime,
+          endTime: hours.endTime,
+          isWorkingDay: hours.isWorkingDay,
           therapistId: hours.therapistId || ''
         }));
+        console.log('Setting working hours:', validWorkingHours);
         setWorkingHours(validWorkingHours);
+      } else {
+        console.error('Working hours data is not an array:', workingHoursData);
       }
+      
       setServices(servicesData);
     } catch (err) {
+      console.error('Error fetching data:', err);
       showError('Došlo je do greške prilikom učitavanja podataka');
     } finally {
       setIsLoading(false);
@@ -210,22 +218,6 @@ export default function Appointments() {
 
   return (
     <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '1rem' }}>
-        <Button
-          variant="contained"
-          color="primary"
-          startIcon={<AddIcon />}
-          onClick={() => {
-            const now = new Date();
-            setSelectedDate(now);
-            setInitialEndTime(new Date(now.getTime() + 30 * 60000)); // Add 30 minutes
-            setIsCreateModalOpen(true);
-          }}
-        >
-          Novi Termin
-        </Button>
-      </div>
-
       {isLoading ? (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flex: 1 }}>
           <CircularProgress />
@@ -240,14 +232,13 @@ export default function Appointments() {
           onViewChange={handleViewChange}
           onDatesSet={handleDatesSet}
           view={{ currentStart: currentDate, type: currentView }}
-          workingHours={workingHours?.[0]}
+          workingHours={workingHours}
           therapists={therapists}
           initialView={currentView}
           initialDate={currentDate}
           scrollTime={scrollTime}
         />
       )}
-
       {isCreateModalOpen && (
         <CreateAppointmentModal
           open={isCreateModalOpen}

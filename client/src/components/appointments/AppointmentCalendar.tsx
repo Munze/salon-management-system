@@ -35,13 +35,11 @@ interface AppointmentCalendarProps {
   onSelectEvent?: (appointment: Appointment) => void;
   onUpdateAppointment?: (appointment: Appointment) => Promise<void>;
   isLoading?: boolean;
-  workingHours?: {
-    startTime: string;
-    endTime: string;
-  };
+  workingHours?: WorkingHours[];
   therapists: Therapist[];
   onViewChange?: (view: string) => void;
   onDatesSet?: (dateInfo: { view: { currentStart: Date; type: string } }) => void;
+  view?: any;
   initialView?: string;
   initialDate?: Date;
   scrollTime?: string;
@@ -53,13 +51,11 @@ export const AppointmentCalendar = React.forwardRef<FullCalendar, AppointmentCal
   onSelectEvent,
   onUpdateAppointment,
   isLoading = false,
-  workingHours = {
-    startTime: '08:00',
-    endTime: '20:00'
-  },
+  workingHours = [],
   therapists,
   onViewChange,
   onDatesSet,
+  view,
   initialView,
   initialDate,
   scrollTime
@@ -83,8 +79,7 @@ export const AppointmentCalendar = React.forwardRef<FullCalendar, AppointmentCal
   };
 
   const handleDatesSet = (dateInfo: any) => {
-    console.log('Dates set:', dateInfo);
-    if (onDatesSet) {
+    if (onDatesSet && (!view?.currentStart || dateInfo.view.currentStart.getTime() !== new Date(view.currentStart).getTime())) {
       onDatesSet({
         view: {
           currentStart: dateInfo.start,
@@ -205,17 +200,176 @@ export const AppointmentCalendar = React.forwardRef<FullCalendar, AppointmentCal
     }
   };
 
+  // Helper function to check if a day is working day
+  const isWorkingDay = useCallback((date: Date) => {
+    if (!Array.isArray(workingHours) || workingHours.length === 0) {
+      return false; // If no working hours set, no days are working days
+    }
+
+    const day = date.getDay();
+    const dayNames = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+    const dayName = dayNames[day];
+    
+    return workingHours.some(wh => 
+      wh.dayOfWeek === dayName && 
+      wh.isWorkingDay
+    );
+  }, [workingHours]);
+
+  // Get business hours from working hours settings
+  const businessHours = useMemo(() => {
+    if (!Array.isArray(workingHours) || workingHours.length === 0) {
+      return [{
+        daysOfWeek: [1, 2, 3, 4, 5], // Monday to Friday
+        startTime: '09:00',
+        endTime: '17:00'
+      }];
+    }
+
+    return workingHours
+      .filter(wh => wh.isWorkingDay)
+      .map(wh => ({
+        daysOfWeek: [['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY']
+          .indexOf(wh.dayOfWeek as string)],
+        startTime: wh.startTime,
+        endTime: wh.endTime
+      }));
+  }, [workingHours]);
+
+  // Get earliest start time and latest end time for the entire week
+  const { slotMinTime, slotMaxTime } = useMemo(() => {
+    console.log('Working hours from database:', workingHours);
+
+    if (!Array.isArray(workingHours) || workingHours.length === 0) {
+      console.log('No working hours found, using defaults');
+      return {
+        slotMinTime: '09:00:00',
+        slotMaxTime: '17:00:00'
+      };
+    }
+
+    const workingDays = workingHours.filter(wh => wh.isWorkingDay);
+    console.log('Working days:', workingDays);
+    
+    if (workingDays.length === 0) {
+      console.log('No working days found, using defaults');
+      return {
+        slotMinTime: '09:00:00',
+        slotMaxTime: '17:00:00'
+      };
+    }
+
+    // Find earliest start time and latest end time across all working days
+    const startTimes = workingDays.map(wh => wh.startTime);
+    const endTimes = workingDays.map(wh => wh.endTime);
+    
+    console.log('Start times:', startTimes);
+    console.log('End times:', endTimes);
+    
+    // Find the earliest start time and latest end time
+    const earliestStart = startTimes.reduce((a, b) => a < b ? a : b);
+    const latestEnd = endTimes.reduce((a, b) => a > b ? a : b);
+
+    console.log('Earliest start:', earliestStart);
+    console.log('Latest end:', latestEnd);
+
+    const result = {
+      slotMinTime: earliestStart + ':00',
+      slotMaxTime: latestEnd + ':00'
+    };
+
+    console.log('Final slot times:', result);
+    return result;
+  }, [workingHours]);
+
+  // Get working days for calendar display
+  const nonWorkingDays = useMemo(() => {
+    if (!Array.isArray(workingHours) || workingHours.length === 0) {
+      return [0, 6]; // Sunday and Saturday
+    }
+
+    const workingDayNumbers = workingHours
+      .filter(wh => wh.isWorkingDay)
+      .map(wh => ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY']
+        .indexOf(wh.dayOfWeek as string));
+
+    return [0, 1, 2, 3, 4, 5, 6].filter(day => !workingDayNumbers.includes(day));
+  }, [workingHours]);
+
   return (
-    <div style={{ height: 'calc(100vh - 180px)', width: '100%' }}>
+    <div style={{ 
+      height: 'calc(100vh - 80px)', 
+      width: 'calc(100vw - var(--sidebar-width))', 
+      padding: '20px', 
+      overflow: 'hidden' 
+    }}>
       <style>
         {`
-          .non-working-day {
-            background-color: #f5f5f5 !important;
-            color: #9e9e9e !important;
-            cursor: not-allowed !important;
+          .fc {
+            height: 100%;
+            width: 100%;
           }
-          .non-working-day .fc-timegrid-col-events {
-            pointer-events: none !important;
+
+          .fc-header-toolbar {
+            padding: 10px;
+            margin-bottom: 0 !important;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+
+          .fc-toolbar-title {
+            font-size: 1.5em !important;
+            text-transform: capitalize;
+          }
+
+          .fc-button {
+            padding: 6px 16px !important;
+            font-size: 0.875rem !important;
+            min-width: 64px !important;
+            border-radius: 4px !important;
+            text-transform: none !important;
+          }
+
+          .fc-newAppointment-button {
+            background-color: #1976d2 !important;
+            border-color: #1976d2 !important;
+            color: white !important;
+          }
+
+          .fc-newAppointment-button:hover {
+            background-color: #1565c0 !important;
+            border-color: #1565c0 !important;
+          }
+
+          .fc-view-harness {
+            height: calc(100% - 80px) !important;
+            background: white;
+          }
+
+          .fc-scrollgrid-sync-table {
+            height: 100% !important;
+          }
+
+          .fc-timegrid-slot {
+            height: 40px !important;
+          }
+
+          .non-working-hours {
+            background-color: rgba(255, 200, 200, 0.3);
+          }
+
+          .fc-day-today {
+            background: rgba(25, 118, 210, 0.05) !important;
+          }
+
+          .fc-timegrid-now-indicator-line {
+            border-color: #1976d2;
+          }
+
+          .fc-timegrid-now-indicator-arrow {
+            border-color: #1976d2;
+            color: #1976d2;
           }
         `}
       </style>
@@ -224,29 +378,44 @@ export const AppointmentCalendar = React.forwardRef<FullCalendar, AppointmentCal
         ref={ref}
         plugins={[timeGridPlugin, interactionPlugin]}
         headerToolbar={{
-          left: 'prev,next today',
+          left: 'prev,next today newAppointment',
           center: 'title',
           right: 'timeGridDay,timeGridWeek'
+        }}
+        customButtons={{
+          newAppointment: {
+            text: 'Novi Termin',
+            click: () => {
+              if (onSelectSlot) {
+                const now = new Date();
+                const end = new Date(now.getTime() + 30 * 60000); // Add 30 minutes
+                onSelectSlot({
+                  start: now,
+                  end: end,
+                  allDay: false,
+                  view: ref.current?.getApi().view
+                } as DateSelectArg);
+              }
+            }
+          }
         }}
         buttonText={{
           today: 'Danas',
           week: 'Nedelja',
           day: 'Dan'
         }}
+        locale="sr-latn"
         initialView={initialView || 'timeGridWeek'}
         initialDate={initialDate}
-        scrollTime={scrollTime || '09:00:00'}
+        scrollTime={scrollTime || slotMinTime}
         firstDay={1}
         editable={false}
         selectable={true}
         selectMirror={true}
         dayMaxEvents={true}
         weekends={true}
-        businessHours={{
-          daysOfWeek: [1, 2, 3, 4, 5, 6], // Monday to Saturday
-          startTime: workingHours?.startTime || '09:00',
-          endTime: workingHours?.endTime || '17:00'
-        }}
+        businessHours={businessHours}
+        hiddenDays={nonWorkingDays}
         scrollTimeReset={false}
         events={appointments.map(appointment => ({
           id: appointment.id,
@@ -262,8 +431,8 @@ export const AppointmentCalendar = React.forwardRef<FullCalendar, AppointmentCal
             price: appointment.price
           }
         }))}
-        slotMinTime={workingHours?.startTime || '09:00'}
-        slotMaxTime={workingHours?.endTime || '17:00'}
+        slotMinTime={slotMinTime}
+        slotMaxTime={slotMaxTime}
         allDaySlot={false}
         eventContent={renderEventContent}
         eventClick={handleEventClick}
@@ -279,14 +448,12 @@ export const AppointmentCalendar = React.forwardRef<FullCalendar, AppointmentCal
           minute: '2-digit',
           hour12: false
         }}
-        dayHeaderFormat={{ weekday: 'short', month: 'numeric', day: 'numeric', omitCommas: true }}
+        dayHeaderFormat={{ weekday: 'long', month: 'numeric', day: 'numeric', omitCommas: true }}
         dayCellClassNames={(arg) => {
-          const day = arg.date.getDay();
-          return day === 0 ? 'non-working-day' : '';
+          return !isWorkingDay(arg.date) ? 'non-working-day' : '';
         }}
         slotLaneClassNames={(arg) => {
-          const day = arg.date.getDay();
-          return day === 0 ? 'non-working-day' : '';
+          return !isWorkingDay(arg.date) ? 'non-working-day' : '';
         }}
         datesSet={handleDatesSet}
         viewDidMount={handleViewDidMount}

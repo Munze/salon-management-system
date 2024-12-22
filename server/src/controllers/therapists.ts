@@ -123,77 +123,52 @@ export const deleteTherapist = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   try {
-    // Start a transaction to check and delete therapist and user
-    await prisma.$transaction(async (prisma) => {
-      // Get therapist and check for appointments
-      const therapist = await prisma.therapist.findUnique({
-        where: { id },
-        include: {
-          appointments: {
-            where: {
-              OR: [
-                { status: Status.SCHEDULED },
-                { status: Status.CONFIRMED },
-                { status: Status.IN_PROGRESS }
-              ]
-            }
-          },
-          scheduleSettings: true,
-          user: true
-        }
-      });
-
-      if (!therapist) {
-        throw new Error('Therapist not found');
-      }
-
-      // Check for active appointments
-      if (therapist.appointments.length > 0) {
-        return res.status(400).json({ 
-          message: 'Ne možete obrisati terapeuta koji ima zakazane termine. Prvo otkažite ili promenite terapeuta za postojeće termine.' 
-        });
-      }
-
-      // Delete schedule settings
-      if (therapist.scheduleSettings.length > 0) {
-        await prisma.scheduleSettings.deleteMany({
-          where: { therapistId: id }
-        });
-      }
-
-      // Delete completed/cancelled appointments
-      await prisma.appointment.deleteMany({
-        where: { 
-          therapistId: id,
-          status: {
-            in: [Status.COMPLETED, Status.CANCELLED, Status.NO_SHOW]
+    // Check if therapist exists and has active appointments
+    const therapist = await prisma.therapist.findUnique({
+      where: { id },
+      include: {
+        appointments: {
+          where: {
+            OR: [
+              { status: Status.SCHEDULED },
+              { status: Status.CONFIRMED },
+              { status: Status.IN_PROGRESS }
+            ]
           }
         }
-      });
-
-      // Delete therapist
-      await prisma.therapist.delete({
-        where: { id }
-      });
-
-      // Delete corresponding user account
-      await prisma.user.delete({
-        where: { id: therapist.userId }
-      });
+      }
     });
 
-    res.status(204).send();
-  } catch (error: any) {
-    logger.error('Error deleting therapist:', error);
-    
-    // Check if this is our custom error message
-    if (error.response?.status === 400) {
-      return res.status(400).json({ message: error.response.data.message });
+    if (!therapist) {
+      throw new Error('Therapist not found');
     }
-    
-    res.status(500).json({ 
-      message: 'Došlo je do greške prilikom brisanja terapeuta.' 
+
+    // Check for active appointments
+    if (therapist.appointments?.length > 0) {
+      return res.status(400).json({ 
+        message: 'Ne možete obrisati terapeuta koji ima zakazane termine. Prvo otkažite ili promenite terapeuta za postojeće termine.' 
+      });
+    }
+
+    // Delete completed/cancelled appointments
+    await prisma.appointment.deleteMany({
+      where: { 
+        therapistId: id,
+        status: {
+          in: [Status.COMPLETED, Status.CANCELLED, Status.NO_SHOW]
+        }
+      }
     });
+
+    // Delete the therapist
+    await prisma.therapist.delete({
+      where: { id }
+    });
+
+    res.json({ message: 'Therapist deleted successfully' });
+  } catch (error) {
+    logger.error('Error deleting therapist:', error);
+    res.status(500).json({ message: error.message });
   }
 };
 

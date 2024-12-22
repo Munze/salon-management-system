@@ -83,73 +83,63 @@ export const createAppointment = async (req: Request, res: Response) => {
 
     const { startTime, endTime, clientId, therapistId, serviceId, notes, price } = req.body;
 
-    // Check if the appointment time is within working hours
     const appointmentStart = new Date(startTime);
     const appointmentEnd = new Date(endTime);
-    
-    // Convert UTC to local Belgrade time
-    const belgradeOffset = 1; // Belgrade is UTC+1
-    const localStart = new Date(appointmentStart.getTime() + belgradeOffset * 60 * 60 * 1000);
-    const localEnd = new Date(appointmentEnd.getTime() + belgradeOffset * 60 * 60 * 1000);
-    
-    // Convert JavaScript's getDay() (Sun=0) to our DB format (Mon=0)
-    const jsDay = localStart.getDay(); // 0-6 (Sunday-Saturday)
-    const dbDay = jsDay === 0 ? 6 : jsDay - 1; // Convert to 0-6 (Monday-Sunday)
 
-    logger.info(`Checking working hours for day ${dbDay}`, {
-      appointmentStartUTC: appointmentStart.toISOString(),
-      appointmentEndUTC: appointmentEnd.toISOString(),
-      localStartTime: localStart.toISOString(),
-      localEndTime: localEnd.toISOString()
+    // Get day of week (0-6, Sunday-Saturday)
+    const jsDay = appointmentStart.getUTCDay();
+    // Convert to day name
+    const dayNames = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+    const dayName = dayNames[jsDay];
+
+    logger.info('Checking working hours for day', {
+      appointmentStart: appointmentStart.toISOString(),
+      appointmentEnd: appointmentEnd.toISOString(),
+      dayName
     });
-    
+
     try {
       // Get global schedule settings
       const scheduleSettings = await prisma.scheduleSettings.findFirst({
         where: {
-          salonId: 'default-salon'
+          dayOfWeek: dayName,
+          isWorkingDay: true
         }
       });
 
       if (!scheduleSettings) {
         return res.status(400).json({
-          message: 'No global schedule settings found'
+          message: 'No schedule settings found for this day'
         });
       }
 
-      // Get working hours for the specific day
-      const workingHours = (scheduleSettings.workingHours as any[]).find(
-        hours => hours.day === dbDay
-      );
-
       logger.info('Schedule settings:', {
-        allWorkingHours: scheduleSettings.workingHours,
+        settings: scheduleSettings,
         jsDay,
-        dbDay,
-        foundHours: workingHours
+        dayName
       });
 
-      if (!workingHours || !workingHours.isOpen) {
+      if (!scheduleSettings.isWorkingDay) {
         return res.status(400).json({
           message: `The salon is not open on this day`
         });
       }
 
       // Parse working hours
-      const [workStartHours, workStartMinutes] = workingHours.openTime.split(':').map(Number);
-      const [workEndHours, workEndMinutes] = workingHours.closeTime.split(':').map(Number);
+      const [workStartHours, workStartMinutes] = scheduleSettings.startTime.split(':').map(Number);
+      const [workEndHours, workEndMinutes] = scheduleSettings.endTime.split(':').map(Number);
 
-      // Create working hours times in local Belgrade time
-      const workStartTime = new Date(localStart);
-      workStartTime.setHours(workStartHours, workStartMinutes, 0, 0);
+      // Create working hours times
+      const workStartTime = new Date(appointmentStart);
+      workStartTime.setUTCHours(workStartHours, workStartMinutes, 0, 0);
       
-      const workEndTime = new Date(localStart);
-      workEndTime.setHours(workEndHours, workEndMinutes, 0, 0);
+      const workEndTime = new Date(appointmentStart);
+      workEndTime.setUTCHours(workEndHours, workEndMinutes, 0, 0);
 
-      // Check if appointment is within working hours using local time
-      if (localStart < workStartTime || localEnd > workEndTime) {
+      // Check if appointment is within working hours
+      if (appointmentStart < workStartTime || appointmentEnd > workEndTime) {
         return res.status(400).json({
-          message: `Appointment time must be between ${workingHours.openTime} and ${workingHours.closeTime}`
+          message: `Appointment time must be between ${scheduleSettings.startTime} and ${scheduleSettings.endTime}`
         });
       }
 
@@ -262,6 +252,12 @@ export const checkAvailability = async (req: Request, res: Response) => {
   try {
     const { startTime, endTime, therapistId } = req.query;
 
+    logger.info('Checking availability with params:', {
+      startTime,
+      endTime,
+      therapistId
+    });
+
     if (!startTime || !endTime || !therapistId) {
       return res.status(400).json({
         message: 'startTime, endTime, and therapistId are required query parameters',
@@ -272,80 +268,77 @@ export const checkAvailability = async (req: Request, res: Response) => {
     const appointmentStart = new Date(startTime as string);
     const appointmentEnd = new Date(endTime as string);
     
-    // Convert UTC to local Belgrade time
-    const belgradeOffset = 1; // Belgrade is UTC+1
-    const localStart = new Date(appointmentStart.getTime() + belgradeOffset * 60 * 60 * 1000);
-    const localEnd = new Date(appointmentEnd.getTime() + belgradeOffset * 60 * 60 * 1000);
+    // Get day of week (0-6, Sunday-Saturday)
+    const jsDay = appointmentStart.getUTCDay();
+    // Convert to day name
+    const dayNames = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+    const dayName = dayNames[jsDay];
     
-    // Convert JavaScript's getDay() (Sun=0) to our DB format (Mon=0)
-    const jsDay = localStart.getDay(); // 0-6 (Sunday-Saturday)
-    const dbDay = jsDay === 0 ? 6 : jsDay - 1; // Convert to 0-6 (Monday-Sunday)
-    
-    logger.info(`Checking working hours for day ${dbDay}`, {
-      appointmentStartUTC: appointmentStart.toISOString(),
-      appointmentEndUTC: appointmentEnd.toISOString(),
-      localStartTime: localStart.toISOString(),
-      localEndTime: localEnd.toISOString()
+    logger.info(`Checking working hours for day ${dayName}`, {
+      appointmentStart: appointmentStart.toISOString(),
+      appointmentEnd: appointmentEnd.toISOString(),
+      jsDay,
+      dayName
     });
     
     try {
       // Get global schedule settings
       const scheduleSettings = await prisma.scheduleSettings.findFirst({
         where: {
-          salonId: 'default-salon'
+          dayOfWeek: dayName
         }
       });
 
+      logger.info('Found schedule settings:', scheduleSettings);
+
       if (!scheduleSettings) {
-        logger.info('No global schedule settings found');
-        return res.json({ 
-          available: false,
-          reason: 'no_schedule'
+        return res.status(400).json({
+          message: 'No schedule settings found for this day'
         });
       }
 
-      // Get working hours for the specific day
-      const workingHours = (scheduleSettings.workingHours as any[]).find(
-        hours => hours.day === dbDay
-      );
-
       logger.info('Schedule settings:', {
-        allWorkingHours: scheduleSettings.workingHours,
+        settings: scheduleSettings,
         jsDay,
-        dbDay,
-        foundHours: workingHours
+        dayName
       });
 
-      if (!workingHours || !workingHours.isOpen) {
-        logger.info(`No working hours found for day ${dbDay} or not a working day`);
-        return res.json({ 
-          available: false,
-          reason: 'outside_working_hours'
+      if (!scheduleSettings.isWorkingDay) {
+        return res.status(400).json({
+          message: `The salon is not open on this day`
         });
       }
 
       // Parse working hours
-      const [workStartHours, workStartMinutes] = workingHours.openTime.split(':').map(Number);
-      const [workEndHours, workEndMinutes] = workingHours.closeTime.split(':').map(Number);
+      const [workStartHours, workStartMinutes] = scheduleSettings.startTime.split(':').map(Number);
+      const [workEndHours, workEndMinutes] = scheduleSettings.endTime.split(':').map(Number);
 
-      // Create working hours times in local Belgrade time
-      const workStartTime = new Date(localStart);
-      workStartTime.setHours(workStartHours, workStartMinutes, 0, 0);
+      // Create working hours times
+      const workStartTime = new Date(appointmentStart);
+      workStartTime.setUTCHours(workStartHours, workStartMinutes, 0, 0);
       
-      const workEndTime = new Date(localStart);
-      workEndTime.setHours(workEndHours, workEndMinutes, 0, 0);
+      const workEndTime = new Date(appointmentStart);
+      workEndTime.setUTCHours(workEndHours, workEndMinutes, 0, 0);
 
-      // Check if appointment is within working hours using local time
-      if (localStart < workStartTime || localEnd > workEndTime) {
+      logger.info('Working hours:', {
+        workStartTime: workStartTime.toISOString(),
+        workEndTime: workEndTime.toISOString(),
+        appointmentStart: appointmentStart.toISOString(),
+        appointmentEnd: appointmentEnd.toISOString()
+      });
+
+      // Check if appointment is within working hours
+      if (appointmentStart < workStartTime || appointmentEnd > workEndTime) {
         logger.info('Appointment is outside working hours', {
-          localStart: localStart.toISOString(),
-          localEnd: localEnd.toISOString(),
+          appointmentStart: appointmentStart.toISOString(),
+          appointmentEnd: appointmentEnd.toISOString(),
           workStart: workStartTime.toISOString(),
           workEnd: workEndTime.toISOString()
         });
         return res.json({ 
           available: false,
-          reason: 'outside_working_hours'
+          reason: 'outside_working_hours',
+          message: `Appointment time must be between ${scheduleSettings.startTime} and ${scheduleSettings.endTime}`
         });
       }
 
@@ -368,30 +361,23 @@ export const checkAvailability = async (req: Request, res: Response) => {
       
       logger.info('Checking appointments for therapist:', therapistId);
       logger.info('Requested time slot:', {
-        startUtc: appointmentStart.toISOString(),
-        endUtc: appointmentEnd.toISOString(),
-        startLocal: localStart.toISOString(),
-        endLocal: localEnd.toISOString()
+        start: appointmentStart.toISOString(),
+        end: appointmentEnd.toISOString(),
       });
       
       if (existingAppointments.length > 0) {
-        const conflictInfo = existingAppointments.map(apt => {
-          const aptLocalStart = new Date(apt.startTime.getTime() + belgradeOffset * 60 * 60 * 1000);
-          const aptLocalEnd = new Date(apt.endTime.getTime() + belgradeOffset * 60 * 60 * 1000);
-          return {
-            startUtc: apt.startTime.toISOString(),
-            endUtc: apt.endTime.toISOString(),
-            startLocal: aptLocalStart.toISOString(),
-            endLocal: aptLocalEnd.toISOString(),
-            client: apt.client.name,
-            service: apt.service.name
-          };
-        });
+        const conflictInfo = existingAppointments.map(apt => ({
+          start: apt.startTime.toISOString(),
+          end: apt.endTime.toISOString(),
+          client: apt.client.name,
+          service: apt.service.name
+        }));
         
         logger.info('Found conflicting appointments:', conflictInfo);
         return res.json({ 
           available: false,
           reason: 'overlap',
+          message: 'This time slot conflicts with another appointment',
           conflicts: conflictInfo
         });
       }

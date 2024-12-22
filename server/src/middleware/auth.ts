@@ -1,11 +1,14 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { logger } from '../utils/logger';
+import { PrismaClient, UserRole } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 interface JwtPayload {
   userId: string;
   email: string;
-  role: 'ADMIN' | 'THERAPIST';
+  role: UserRole;
   salonId: string;
 }
 
@@ -13,25 +16,29 @@ declare global {
   namespace Express {
     interface Request {
       user?: {
-        userId: string;
+        id: string;
         email: string;
-        role: string;
+        role: UserRole;
         salonId: string;
       };
     }
   }
 }
 
-export const authenticate = (req: Request, res: Response, next: NextFunction) => {
+export const authenticate = async (req: Request, res: Response, next: NextFunction) => {
   try {
     logger.info(`Authenticating request to: ${req.method} ${req.path}`);
-    const authHeader = req.header('Authorization');
-    logger.debug(`Auth header: ${authHeader ? 'Present' : 'Missing'}`);
+    const authHeader = req.headers.authorization;
     
-    const token = authHeader?.replace('Bearer ', '');
+    if (!authHeader) {
+      logger.warn('No authorization header provided');
+      return res.status(401).json({ message: 'No token provided' });
+    }
+
+    const token = authHeader.split(' ')[1];
     if (!token) {
-      logger.warn('No token provided in request');
-      return res.status(401).json({ message: 'Authentication required' });
+      logger.warn('No token provided in authorization header');
+      return res.status(401).json({ message: 'No token provided' });
     }
 
     try {
@@ -40,20 +47,31 @@ export const authenticate = (req: Request, res: Response, next: NextFunction) =>
         process.env.JWT_SECRET || 'your-secret-key'
       ) as JwtPayload;
 
-      if (!decoded.role) {
-        logger.warn(`No role found in token for user ${decoded.userId}`);
-        return res.status(401).json({ message: 'Invalid token: missing role' });
+      const user = await prisma.user.findUnique({
+        where: { id: decoded.userId }
+      });
+
+      if (!user) {
+        logger.warn(`User not found for token with user ID ${decoded.userId}`);
+        return res.status(401).json({ message: 'User not found' });
       }
 
-      logger.debug(`Token decoded successfully. User ID: ${decoded.userId}, Role: ${decoded.role}, Email: ${decoded.email}`);
-      req.user = decoded;
+      logger.debug(`Token decoded successfully. User ID: ${decoded.userId}, Role: ${decoded.role}`);
+      // Set user info in request
+      req.user = {
+        id: user.id,
+        email: user.email,
+        role: user.role,
+        salonId: user.salonId
+      };
+
       next();
     } catch (jwtError) {
       logger.error('JWT verification failed:', jwtError);
-      res.status(401).json({ message: 'Invalid token' });
+      return res.status(401).json({ message: 'Invalid token' });
     }
   } catch (error) {
     logger.error('Authentication middleware error:', error);
-    res.status(500).json({ message: 'Internal server error during authentication' });
+    return res.status(500).json({ message: 'Internal server error during authentication' });
   }
 };

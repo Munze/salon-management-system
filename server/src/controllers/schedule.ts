@@ -4,40 +4,15 @@ import { logger } from '../utils/logger';
 
 type DayOfWeek = 'SUNDAY' | 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY' | 'SATURDAY';
 
-// Working Hours
+// Working Hours Management
 export const getWorkingHours = async (req: Request, res: Response) => {
-  const { therapistId } = req.query;
   try {
-    logger.debug('Fetching working hours for therapist:', therapistId);
-    
-    const scheduleSettings = await prisma.scheduleSettings.findMany({
-      where: therapistId ? { therapistId: therapistId as string } : {},
-      orderBy: { dayOfWeek: 'asc' },
-      include: {
-        therapist: {
-          select: {
-            name: true,
-            email: true,
-            specialties: true
-          }
-        }
+    const workingHours = await prisma.scheduleSettings.findMany({
+      orderBy: {
+        dayOfWeek: 'asc'
       }
     });
 
-    // Transform schedule settings to working hours format
-    const workingHours = scheduleSettings.map(setting => ({
-      id: setting.id,
-      therapistId: setting.therapistId,
-      dayOfWeek: setting.dayOfWeek,
-      startTime: setting.startTime,
-      endTime: setting.endTime,
-      isWorkingDay: setting.isWorkingDay,
-      therapistName: setting.therapist.name,
-      therapistEmail: setting.therapist.email,
-      specialties: setting.therapist.specialties
-    }));
-
-    logger.debug('Found working hours:', workingHours);
     res.json(workingHours);
   } catch (error) {
     logger.error('Error fetching working hours:', error);
@@ -46,200 +21,154 @@ export const getWorkingHours = async (req: Request, res: Response) => {
 };
 
 export const updateWorkingHours = async (req: Request, res: Response) => {
-  const workingHoursData = req.body;
+  const { id } = req.params;
+  const { startTime, endTime, isWorkingDay } = req.body;
+
   try {
-    logger.debug('Received working hours data:', JSON.stringify(workingHoursData, null, 2));
-    
-    // Validate the input data
-    if (!Array.isArray(workingHoursData)) {
-      logger.error('Invalid working hours data: not an array');
-      return res.status(400).json({ message: 'Invalid working hours data format' });
-    }
-
-    // Validate each working hours entry
-    for (const hours of workingHoursData) {
-      if (!hours.dayOfWeek || !hours.startTime || !hours.endTime) {
-        logger.error('Invalid working hours entry:', hours);
-        return res.status(400).json({ 
-          message: 'Invalid working hours data: missing required fields',
-          invalidEntry: hours 
-        });
+    const updatedHours = await prisma.scheduleSettings.update({
+      where: { id },
+      data: {
+        startTime,
+        endTime,
+        isWorkingDay
       }
-
-      // Validate time format (HH:mm)
-      const timeRegex = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
-      if (!timeRegex.test(hours.startTime) || !timeRegex.test(hours.endTime)) {
-        logger.error('Invalid time format:', { startTime: hours.startTime, endTime: hours.endTime });
-        return res.status(400).json({ 
-          message: 'Invalid time format. Use HH:mm format (24-hour)',
-          invalidEntry: hours 
-        });
-      }
-    }
-
-    // Wrap the operations in a transaction
-    const result = await prisma.$transaction(async (tx) => {
-      // Delete existing schedule settings for the therapist
-      if (workingHoursData[0]?.therapistId) {
-        await tx.scheduleSettings.deleteMany({
-          where: {
-            therapistId: workingHoursData[0].therapistId,
-          },
-        });
-      }
-
-      // Create new schedule settings
-      const sanitizedData = workingHoursData.map(({ id, therapistName, therapistEmail, specialties, ...rest }) => {
-        // Ensure time format is correct (HH:mm)
-        const formatTime = (time: string) => {
-          if (!time) return '00:00';
-          const [hours, minutes] = time.split(':');
-          return `${hours.padStart(2, '0')}:${minutes.padStart(2, '0')}`;
-        };
-
-        return {
-          id: `${rest.therapistId || 'default'}-${rest.dayOfWeek}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-          startTime: formatTime(rest.startTime),
-          endTime: formatTime(rest.endTime),
-          isWorkingDay: typeof rest.isWorkingDay === 'boolean' ? rest.isWorkingDay : true,
-          dayOfWeek: rest.dayOfWeek,
-          therapistId: rest.therapistId
-        };
-      });
-
-      // Create all schedule settings
-      const createdSettings = await Promise.all(
-        sanitizedData.map(data =>
-          tx.scheduleSettings.create({
-            data,
-            include: {
-              therapist: {
-                select: {
-                  name: true,
-                  email: true,
-                  specialties: true
-                }
-              }
-            }
-          })
-        )
-      );
-
-      return createdSettings;
     });
 
-    logger.debug('Created schedule settings:', JSON.stringify(result, null, 2));
-    res.json(result);
+    res.json(updatedHours);
   } catch (error) {
-    logger.error('Database error while updating working hours:', error);
-    res.status(500).json({ message: 'Failed to update working hours', error: error.message });
+    logger.error('Error updating working hours:', error);
+    res.status(500).json({ message: 'Failed to update working hours' });
+  }
+};
+
+export const updateAllWorkingHours = async (req: Request, res: Response) => {
+  const workingHours = req.body;
+  
+  try {
+    // Convert object to array if necessary
+    const hoursArray = Array.isArray(workingHours) ? workingHours : Object.values(workingHours);
+
+    // Delete all existing working hours
+    await prisma.scheduleSettings.deleteMany({});
+
+    // Create new working hours
+    const createdHours = await prisma.scheduleSettings.createMany({
+      data: hoursArray.map(hour => ({
+        dayOfWeek: hour.dayOfWeek,
+        startTime: hour.startTime,
+        endTime: hour.endTime,
+        isWorkingDay: hour.isWorkingDay
+      }))
+    });
+
+    // Fetch and return the newly created working hours
+    const newWorkingHours = await prisma.scheduleSettings.findMany({
+      orderBy: {
+        dayOfWeek: 'asc'
+      }
+    });
+
+    res.json(newWorkingHours);
+  } catch (error) {
+    logger.error('Error updating all working hours:', error);
+    res.status(500).json({ message: 'Failed to update working hours' });
+  }
+};
+
+export const createWorkingHours = async (req: Request, res: Response) => {
+  const { dayOfWeek, startTime, endTime, isWorkingDay } = req.body;
+
+  try {
+    // Check if settings already exist for this day
+    const existingSettings = await prisma.scheduleSettings.findFirst({
+      where: { dayOfWeek }
+    });
+
+    if (existingSettings) {
+      return res.status(400).json({ 
+        message: 'Working hours for this day already exist. Use update instead.' 
+      });
+    }
+
+    const workingHours = await prisma.scheduleSettings.create({
+      data: {
+        dayOfWeek,
+        startTime,
+        endTime,
+        isWorkingDay: isWorkingDay ?? true
+      }
+    });
+
+    res.json(workingHours);
+  } catch (error) {
+    logger.error('Error creating working hours:', error);
+    res.status(500).json({ message: 'Failed to create working hours' });
   }
 };
 
 // Schedule Exceptions
 export const getScheduleExceptions = async (req: Request, res: Response) => {
-  const { therapistId, startDate, endDate } = req.query;
+  const { startDate, endDate } = req.query;
   try {
-    logger.debug('Fetching schedule exceptions:', { therapistId, startDate, endDate });
-
-    if (!startDate || !endDate) {
-      return res.status(400).json({ 
-        message: 'Missing required date range parameters',
-        required: { startDate: 'YYYY-MM-DD', endDate: 'YYYY-MM-DD' }
-      });
-    }
-
+    logger.debug('Fetching schedule exceptions:', { startDate, endDate });
+    
     const exceptions = await prisma.scheduleException.findMany({
       where: {
-        therapistId: therapistId ? therapistId as string : undefined,
         date: {
-          gte: new Date(startDate as string),
-          lte: new Date(endDate as string),
-        },
-      },
-      include: {
-        therapist: {
-          select: {
-            name: true,
-            email: true,
-            specialties: true
-          }
+          gte: startDate ? new Date(startDate as string) : undefined,
+          lte: endDate ? new Date(endDate as string) : undefined
         }
       },
-      orderBy: {
-        date: 'asc'
-      }
+      orderBy: { date: 'asc' }
     });
 
-    logger.debug(`Found ${exceptions.length} exceptions`);
+    logger.debug('Found schedule exceptions:', exceptions);
     res.json(exceptions);
   } catch (error) {
     logger.error('Error fetching schedule exceptions:', error);
-    res.status(500).json({ 
-      message: 'Failed to fetch schedule exceptions',
-      error: error.message 
-    });
+    res.status(500).json({ message: 'Failed to fetch schedule exceptions' });
   }
 };
 
 export const createScheduleException = async (req: Request, res: Response) => {
   const exceptionData = req.body;
   try {
-    logger.debug('Creating schedule exception:', exceptionData);
-
     const exception = await prisma.scheduleException.create({
       data: {
         date: new Date(exceptionData.date),
         startTime: exceptionData.startTime,
         endTime: exceptionData.endTime,
         isWorkingDay: exceptionData.isWorkingDay ?? true,
-        note: exceptionData.note,
-        therapistId: exceptionData.therapistId,
-      },
-      include: {
-        therapist: {
-          select: {
-            name: true,
-            email: true,
-            specialties: true
-          }
-        }
+        note: exceptionData.note
       }
     });
 
-    logger.debug('Created schedule exception:', exception);
     res.json(exception);
   } catch (error) {
     logger.error('Error creating schedule exception:', error);
-    res.status(500).json({ 
-      message: 'Failed to create schedule exception',
-      error: error.message 
-    });
+    res.status(500).json({ message: 'Failed to create schedule exception' });
   }
 };
 
 export const updateScheduleException = async (req: Request, res: Response) => {
   const { id } = req.params;
+  const updateData = req.body;
+  
   try {
     const exception = await prisma.scheduleException.update({
       where: { id },
-      data: req.body,
-      include: {
-        therapist: {
-          select: {
-            name: true,
-            email: true
-          }
-        }
+      data: {
+        date: updateData.date ? new Date(updateData.date) : undefined,
+        startTime: updateData.startTime,
+        endTime: updateData.endTime,
+        isWorkingDay: updateData.isWorkingDay,
+        note: updateData.note
       }
     });
     res.json(exception);
   } catch (error) {
     logger.error('Error updating schedule exception:', error);
-    res.status(500).json({ 
-      message: 'Failed to update schedule exception',
-      error: error.message 
-    });
+    res.status(500).json({ message: 'Failed to update schedule exception' });
   }
 };
 
@@ -263,105 +192,147 @@ export const deleteScheduleException = async (req: Request, res: Response) => {
 const dayNames: DayOfWeek[] = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
 
 export const checkAvailability = async (req: Request, res: Response) => {
-  const { startTime, endTime, therapistId } = req.body;
+  const { startTime, endTime, therapistId } = req.query;
+  
   try {
-    logger.info('=== AVAILABILITY CHECK START ===');
-    logger.info('Request body:', { startTime, endTime, therapistId });
+    logger.info('Checking availability for:', {
+      startTime,
+      endTime,
+      therapistId
+    });
 
-    const appointmentStart = new Date(startTime as string);
-    const appointmentEnd = new Date(endTime as string);
-    
-    // Get local date by adjusting for timezone offset
-    const localDate = new Date(appointmentStart.getTime());
-    const dayOfWeek = dayNames[localDate.getDay()];
-    
-    logger.info(`Checking working hours for ${dayOfWeek} (${appointmentStart.toISOString()})`);
+    // Convert times to Date objects (these are in UTC)
+    const startUtc = new Date(startTime as string);
+    const endUtc = new Date(endTime as string);
 
-    // Query schedule settings for the specific day and therapist
-    const scheduleSettings = await prisma.scheduleSettings.findFirst({
+    // Convert UTC to local time (Belgrade is UTC+1)
+    const startLocal = new Date(startUtc.getTime() + 60 * 60 * 1000);
+    const endLocal = new Date(endUtc.getTime() + 60 * 60 * 1000);
+
+    // Get day of week from local time
+    const dayOfWeek = startLocal.getDay();
+    const dayName = dayNames[dayOfWeek];
+
+    logger.info('Time conversion results:', {
+      startUtc: startUtc.toISOString(),
+      endUtc: endUtc.toISOString(),
+      startLocal: startLocal.toISOString(),
+      endLocal: endLocal.toISOString(),
+      dayOfWeek,
+      dayName,
+      allDayNames: dayNames
+    });
+
+    // Get working hours for the day
+    const workingHours = await prisma.scheduleSettings.findFirst({
       where: {
-        dayOfWeek,
-        therapistId: therapistId as string,
+        dayOfWeek: dayName,
         isWorkingDay: true
       }
     });
 
-    if (!scheduleSettings) {
-      logger.info(`No working hours found for ${dayOfWeek} or not a working day`);
-      return res.json({ 
-        available: false, 
-        reason: 'outside_working_hours', 
-        message: `No working hours found for ${dayOfWeek}` 
-      });
-    }
-
-    // Parse working hours time strings
-    const [startHour, startMinute] = scheduleSettings.startTime.split(':').map(Number);
-    const [endHour, endMinute] = scheduleSettings.endTime.split(':').map(Number);
-    
-    // Convert appointment times to minutes for comparison
-    const appointmentStartMinutes = appointmentStart.getHours() * 60 + appointmentStart.getMinutes();
-    const appointmentEndMinutes = appointmentEnd.getHours() * 60 + appointmentEnd.getMinutes();
-    const workingStartMinutes = startHour * 60 + startMinute;
-    const workingEndMinutes = endHour * 60 + endMinute;
-
-    // Check if appointment is within working hours
-    if (appointmentStartMinutes < workingStartMinutes || appointmentEndMinutes > workingEndMinutes) {
-      logger.info('Appointment is outside working hours', {
-        appointmentTime: `${appointmentStartMinutes}-${appointmentEndMinutes}`,
-        workingHours: `${workingStartMinutes}-${workingEndMinutes}`
-      });
-      return res.json({ 
-        available: false, 
-        reason: 'outside_working_hours',
-        message: `Appointment time is outside working hours (${scheduleSettings.startTime}-${scheduleSettings.endTime})`
-      });
-    }
-
-    logger.info('Appointment is within working hours, checking for conflicts...');
-
-    // Check for overlapping appointments
-    const conflictingAppointments = await prisma.appointment.findFirst({
-      where: {
-        therapistId: therapistId as string,
-        OR: [
-          {
-            AND: [
-              { startTime: { lte: appointmentStart } },
-              { endTime: { gt: appointmentStart } }
-            ]
-          },
-          {
-            AND: [
-              { startTime: { lt: appointmentEnd } },
-              { endTime: { gte: appointmentEnd } }
-            ]
-          },
-          {
-            AND: [
-              { startTime: { gte: appointmentStart } },
-              { endTime: { lte: appointmentEnd } }
-            ]
-          }
-        ],
-        status: {
-          notIn: ['CANCELLED', 'NO_SHOW']
-        }
-      },
+    logger.info('Working hours query:', {
+      dayName,
+      workingHours,
+      query: {
+        dayOfWeek: dayName,
+        isWorkingDay: true
+      }
     });
 
-    if (conflictingAppointments) {
-      logger.info('Conflicting appointment found:', conflictingAppointments);
-      return res.json({ 
-        available: false, 
-        reason: 'overlap',
-        message: 'This time slot conflicts with another appointment'
+    if (!workingHours) {
+      // Check if any working hours exist at all
+      const allWorkingHours = await prisma.scheduleSettings.findMany();
+      logger.info('No schedule settings found. All working hours in database:', allWorkingHours);
+
+      return res.status(400).json({ 
+        message: `No schedule settings found for ${dayName}. Please set up working hours for this day.`,
+        debug: {
+          requestedDay: dayName,
+          availableDays: allWorkingHours.map(wh => wh.dayOfWeek)
+        }
       });
     }
 
+    // Check if within working hours
+    const [startHour, startMinute] = workingHours.startTime.split(':').map(Number);
+    const [endHour, endMinute] = workingHours.endTime.split(':').map(Number);
+
+    // Create Date objects for working hours using the local appointment date
+    const workStart = new Date(startLocal);
+    workStart.setHours(startHour, startMinute, 0, 0);
+
+    const workEnd = new Date(startLocal);
+    workEnd.setHours(endHour, endMinute, 0, 0);
+
+    logger.info('Working hours check:', {
+      appointmentStartLocal: startLocal.toISOString(),
+      appointmentEndLocal: endLocal.toISOString(),
+      workingHoursStart: workStart.toISOString(),
+      workingHoursEnd: workEnd.toISOString(),
+      isBeforeWorkStart: startLocal < workStart,
+      isAfterWorkEnd: endLocal > workEnd
+    });
+
+    if (startLocal < workStart || endLocal > workEnd) {
+      logger.info('Time outside working hours:', { 
+        startLocal: startLocal.toISOString(), 
+        endLocal: endLocal.toISOString(), 
+        workStart: workStart.toISOString(), 
+        workEnd: workEnd.toISOString() 
+      });
+      return res.status(400).json({ 
+        message: `Appointment must be between ${workingHours.startTime} and ${workingHours.endTime}`
+      });
+    }
+
+    // Check for overlapping appointments
+    const overlappingAppointments = await prisma.appointment.findMany({
+      where: {
+        AND: [
+          {
+            therapistId: therapistId as string,
+            status: {
+              not: 'CANCELLED'
+            }
+          },
+          {
+            OR: [
+              {
+                startTime: {
+                  lt: endUtc,
+                  gte: startUtc
+                }
+              },
+              {
+                endTime: {
+                  gt: startUtc,
+                  lte: endUtc
+                }
+              }
+            ]
+          }
+        ]
+      }
+    });
+
+    logger.info('Overlapping appointments check:', {
+      overlappingCount: overlappingAppointments.length,
+      overlappingAppointments
+    });
+
+    if (overlappingAppointments.length > 0) {
+      logger.info('Found overlapping appointments:', overlappingAppointments);
+      return res.status(400).json({ 
+        message: 'This time slot is already booked'
+      });
+    }
+
+    // Time slot is available
+    logger.info('Time slot is available');
     res.json({ available: true });
   } catch (error) {
-    logger.error('Database error while checking availability:', error);
+    logger.error('Error checking availability:', error);
     res.status(500).json({ message: 'Failed to check availability' });
   }
 };

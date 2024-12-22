@@ -257,19 +257,27 @@ export default function Analytics() {
                     return [value, name];
                   }}
                   labelFormatter={(date) => {
-                    const daysDiff = differenceInDays(
-                      parseISO(timeframe[1].toISOString()),
-                      parseISO(timeframe[0].toISOString())
-                    );
-                    
-                    if (daysDiff <= 30) {
-                      return format(parseISO(date), 'dd.MM.yyyy');
-                    } else if (daysDiff <= 90) {
-                      const startOfWeek = startOfWeek(parseISO(date));
-                      const endOfWeek = endOfWeek(parseISO(date));
-                      return `${format(startOfWeek, 'dd.MM')} - ${format(endOfWeek, 'dd.MM.yyyy')}`;
-                    } else {
-                      return format(parseISO(date), 'MMMM yyyy');
+                    try {
+                      // Check if date is already a Date object
+                      const dateObj = date instanceof Date ? date : new Date(date);
+                      
+                      const daysDiff = differenceInDays(
+                        timeframe[1],
+                        timeframe[0]
+                      );
+                      
+                      if (daysDiff <= 30) {
+                        return format(dateObj, 'dd.MM.yyyy');
+                      } else if (daysDiff <= 90) {
+                        const weekStart = startOfWeek(dateObj);
+                        const weekEnd = endOfWeek(dateObj);
+                        return `${format(weekStart, 'dd.MM')} - ${format(weekEnd, 'dd.MM.yyyy')}`;
+                      } else {
+                        return format(dateObj, 'MMMM yyyy');
+                      }
+                    } catch (error) {
+                      console.error('Error formatting date:', error, date);
+                      return 'Invalid date';
                     }
                   }}
                   contentStyle={{ 
